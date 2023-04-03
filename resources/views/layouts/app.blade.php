@@ -98,7 +98,7 @@
                             <a class="nav-link" href="{{ route('registro') }}">Item 1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Item 2</a>
+                            <a class="nav-link" href="{{ route('new')}}">Item 2</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Item 3</a>
