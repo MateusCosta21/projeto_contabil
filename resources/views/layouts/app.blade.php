@@ -95,7 +95,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Item 1</a>
+                            <a class="nav-link" href="{{ route('registro') }}">Item 1</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Item 2</a>
