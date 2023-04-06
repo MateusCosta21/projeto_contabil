@@ -21,6 +21,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <style>
 .card-header {
     background-color: #243452;
@@ -533,9 +535,9 @@ h1, .h1 {
                 <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a>
                 <div class='dashboard-nav-dropdown'>
                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                    <i class="fas fa-photo-video"></i> Media </a>
+                    <i class="fas fa-photo-video"></i> Cadastros </a>
                     <div class='dashboard-nav-dropdown-menu'>
-                        <a href="#" class="dashboard-nav-dropdown-item">All</a>
+                        <a href="{{route('clientes') }}" class="dashboard-nav-dropdown-item">Clientes</a>
                         <a href="#" class="dashboard-nav-dropdown-item">All</a>
                         <a href="#" class="dashboard-nav-dropdown-item">All</a>
                 </div>
@@ -592,18 +594,9 @@ h1, .h1 {
                     @endunless
                 </ul>
             </header>
-            <div class='dashboard-content'>
-                <div class='container'>
-                    <div class='card'>
-                        <div class='card-header'>
-                            <h1>Welcome back Jim</h1>
-                        </div>
-                        <div class='card-body'>
-                            <p>Your account type is: Administrator</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <main class="">
+                @yield('content')
+            </main>
         </div>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>

@@ -24,3 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/registro', function () {
 return view('registro');
 })->name('registro');
+
+
+Route::get('/clientes', function () {
+    return view('clientes');
+    })->name('clientes');
