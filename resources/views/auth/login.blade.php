@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-md-6 bg-info p-5 d-flex flex-column justify-content-center align-items-center">
             <!-- Coloque aqui seu conteúdo para o banner informativo -->
-            <h1 style="margin-top: 45px;" id="titulo">Sistema Contabilidade</h1>
+            <h1 style="margin-top: 45px;" id="titulo">SGP</h1>
         </div>
 
         <div class="col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center align-items-center">
             <!-- Coloque aqui o formulário de login -->
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Área de Login') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
