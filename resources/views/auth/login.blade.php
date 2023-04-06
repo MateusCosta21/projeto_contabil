@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.lay')
 
 @section('content')
 <div class="container-fluid">
@@ -7,7 +7,6 @@
             <!-- Coloque aqui seu conteúdo para o banner informativo -->
             <h1 style="margin-top: 45px;" id="titulo">SGP</h1>
         </div>
-
         <div class="col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center align-items-center">
             <!-- Coloque aqui o formulário de login -->
             <div class="card">
