@@ -18,6 +18,7 @@
             </form>
             @else
             <form action="{{ route('adiciona_outro')}}" method="post">
+              <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}"> 
                 @csrf
                 <br>
                 <h1 class="text-center"> Novo Objeto </h1>

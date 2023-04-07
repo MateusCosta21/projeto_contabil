@@ -16,6 +16,8 @@ class CreateTipoObjetosTable extends Migration
         Schema::create('tipo_objetos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->unsignedBigInteger('usuario_id'); 
+            $table->foreign('usuario_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }

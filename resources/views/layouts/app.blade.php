@@ -35,10 +35,9 @@
                 <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i> Home </a>
                 <a href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> dashboard
             </a>
-                <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a>
                 <div class='dashboard-nav-dropdown'>
                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                    <i class="fas fa-photo-video"></i> Cadastros </a>
+                        <i class="fas fa-user-plus"></i>Cadastros </a>
                     <div class='dashboard-nav-dropdown-menu'>
                         <a href="{{route('clientes') }}" class="dashboard-nav-dropdown-item">Clientes</a>
                         <a href="{{route('tipo_objeto') }}" class="dashboard-nav-dropdown-item">Tipos de objeto</a>
