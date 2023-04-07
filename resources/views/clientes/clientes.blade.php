@@ -7,7 +7,7 @@
     </div>
 @endif
 <br>
-<div class="container">
+<div class="container mx-auto" style="max-width: 95%; overflow-x: hidden;">
   <div class="row">
     <div class="col-md-2">
       <!-- Menu aqui -->
