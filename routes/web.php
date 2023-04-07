@@ -38,5 +38,6 @@ Route::get('/tipos_objetos/novo', [App\Http\Controllers\TiposObjetoController::c
 Route::post('/tipos_objetos/add', [App\Http\Controllers\TiposObjetoController::class, 'add'])->name('adiciona_outro')->middleware('auth');
 Route::get('/tipos_objetos/{id}/edit', [App\Http\Controllers\TiposObjetoController::class, 'edit'])->name('edita_tipo')->middleware('auth');;
 Route::post('/tipos_objetos/update/{id}', [App\Http\Controllers\TiposObjetoController::class, 'update'])->name('update_tipos')->middleware('auth');;
+Route::delete('/tipos_objetos/delete/{id}', [App\Http\Controllers\TiposObjetoController::class, 'delete'])->name('delete_tipos')->middleware('auth');;
 
 

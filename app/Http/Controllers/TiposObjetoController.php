@@ -40,4 +40,9 @@ class TiposObjetoController extends Controller
             return redirect()->back()->withInput()->withErrors(['Cliente não pode ser atualizado']);
         }  
     }
+    public function delete($id){
+        $tipoObjeto = TipoObjeto::findOrFail($id);
+        $tipoObjeto->delete();
+        return redirect()->route('tipo_objeto')->with('success', 'Registro deletado');
+    }
 }
