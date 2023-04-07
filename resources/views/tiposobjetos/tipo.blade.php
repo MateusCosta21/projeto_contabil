@@ -1,0 +1,46 @@
+@extends('layouts.app')
+
+@section('content')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+<br>
+<div class="container mx-auto" style="max-width: 95%; overflow-x: hidden;">
+  <div class="row">
+    <div class="col-md-12" style="margin-right:15em;">
+      <a href="{{ route('new') }}"> <button type="button" class="btn btn-primary btn-sm">Novo Tipo</button></a>
+      <hr>
+      <div class="table-responsive-sm" style="max-width: 95%;">
+        <table class="table" id="clientes">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col" class="d-none d-sm-table-cell">Atualizado por:</th>
+              <th scope="col" class="d-none d-sm-table-cell">Data Cadastro</th>
+              <th scope="col" class="d-none d-sm-table-cell">Data Update</th>
+              <th scope="col"></th>
+              <th scope="col" class="d-none d-sm-table-cell"></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($tipo_objeto as $tipo)
+              <tr>
+                <td>{{ $tipo->nome }}</td>
+                <td class="d-none d-md-table-cell">ADMINISTRADOR</td> 
+                <td class="d-none d-md-table-cell">{{ date("d/m/Y", strtotime($tipo->created_at)) }}</td> 
+                <td class="d-none d-md-table-cell">{{ date("d/m/Y", strtotime($tipo->updated_at)) }}</td> 
+                <td class="d-none d-md-table-cell">
+                </td>              
+                <td class="d-none d-md-table-cell">
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

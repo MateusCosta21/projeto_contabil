@@ -31,3 +31,10 @@ Route::get('/cadastra_cliente/{id}/edit', [App\Http\Controllers\ClientesControll
 Route::post('/cadastra_cliente/update/{id}', [App\Http\Controllers\ClientesController::class, 'update'])->name('update')->middleware('auth');;
 Route::delete('/cadastra_cliente/delete/{id}', [App\Http\Controllers\ClientesController::class, 'delete'])->name('delete')->middleware('auth');;
 /* FIM CLIENTES */
+
+
+Route::get('/tipos_objetos', [App\Http\Controllers\TiposObjetoController::class, 'index'])->name('tipo_objeto')->middleware('auth');
+Route::get('/tipos_objetos/novo', [App\Http\Controllers\TiposObjetoController::class, 'new'])->name('new')->middleware('auth');
+Route::post('/tipos_objetos/add', [App\Http\Controllers\TiposObjetoController::class, 'add'])->name('adiciona_outro')->middleware('auth');
+
+
