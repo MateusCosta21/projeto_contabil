@@ -28,7 +28,8 @@ class CreateClientesTable extends Migration
             $table->string('bairro',50);
             $table->string('cidade',50);
             $table->string('estado');
-
+            $table->unsignedBigInteger('usuario_id'); 
+            $table->foreign('usuario_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }

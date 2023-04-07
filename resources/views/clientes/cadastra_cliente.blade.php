@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8" style="margin-bottom: 50px; margin-top:15px;">
             @if( Request::is('*/edit'))  
-            <form action="{{ route('update', ['id' => $cliente->id]) }}" method="post">                
+            <form action="{{ route('update', ['id' => $cliente->id]) }}" method="post"> 
+              <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">                
                 @csrf
                 <br>
                 <h1 class="text-center"> Novo cliente </h1>
@@ -68,6 +69,7 @@
             @else
             <form action="{{ route('add')}}" method="post">
                 @csrf
+                <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}"> 
                 <br>
                 <h1 class="text-center"> Novo cliente </h1>
                 <div class="form-group">

@@ -18,8 +18,8 @@
             </form>
             @else
             <form action="{{ route('adiciona_outro')}}" method="post">
-              <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}"> 
                 @csrf
+                <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}"> 
                 <br>
                 <h1 class="text-center"> Novo Objeto </h1>
                 <div class="form-group">

@@ -32,7 +32,7 @@
                 <td class="text-truncate">{{ $cliente->nome }}</td>
                 <td class="d-none d-sm-table-cell">{{ $cliente->razao_social }}</td>
                 <td class="d-none d-sm-table-cell">{{ $cliente->cnpj}}</td> 
-                <td class="d-none d-sm-table-cell">{{ $cliente->cnpj}}</td> 
+                <td class="d-none d-sm-table-cell">{{ $cliente->usuario->name }}</td> 
                 <td class="d-none d-sm-table-cell">{{ date("d/m/Y", strtotime($cliente->created_at)) }}</td> 
                 <td class="d-none d-sm-table-cell">{{ date("d/m/Y", strtotime($cliente->updated_at)) }}</td> 
                 <td><a href="{{ route('edit',['id'=>$cliente->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>

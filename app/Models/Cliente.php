@@ -12,6 +12,11 @@ class Cliente extends Model
     'nome_fantasia','telefone',
     'email','cep','rua','numero',
     'complemento','bairro',
-    'cidade','estado'
+    'cidade','estado', 'usuario_id'
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }
