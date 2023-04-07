@@ -33,12 +33,12 @@
                 <td class="d-none d-md-table-cell">{{ date("d/m/Y", strtotime($tipo->updated_at)) }}</td> 
                 <td><a href="{{ route('edita_tipo',['id'=>$tipo->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>
                 <td class="d-none d-sm-table-cell">
-                    <form action="{{ route('delete_tipos',['id'=>$tipo->id])}}" method="post">
+                    <form action="{{ route('delete_tipos',['id'=>$tipo->id])}}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
                         @csrf
                         @method('delete')
                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                     </form>
-                  </td>
+                </td>
               </tr>
             @endforeach
           </tbody>

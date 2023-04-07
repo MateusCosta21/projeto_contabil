@@ -37,7 +37,7 @@
                 <td class="d-none d-sm-table-cell">{{ date("d/m/Y", strtotime($cliente->updated_at)) }}</td> 
                 <td><a href="{{ route('edit',['id'=>$cliente->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>
                 <td class="d-none d-sm-table-cell">
-                  <form action="{{ route('delete',['id'=>$cliente->id])}}" method="post">
+                  <form action="{{ route('delete',['id'=>$cliente->id])}}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?')">
                       @csrf
                       @method('delete')
                       <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
