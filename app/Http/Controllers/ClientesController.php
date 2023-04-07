@@ -7,6 +7,10 @@ use App\Models\Cliente;
 
 class ClientesController extends Controller
 {
+    public function index(){
+        $clientes = Cliente::get();
+        return view('clientes.clientes',['clientes' => $clientes]);
+    }
     public function add(Request $request){
         try {
         $cliente = new Cliente();

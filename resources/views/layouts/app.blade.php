@@ -145,6 +145,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: 1.2;
 }
 
+  .table td,
+  .table th {
+    padding: 0.78rem; 
+    white-space: nowrap;
+  }
+
 h1, .h1 {
     font-size: 2.5rem;
     font-weight: normal;
