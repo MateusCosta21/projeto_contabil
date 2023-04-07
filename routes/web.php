@@ -21,9 +21,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/registro', function () {
-return view('registro');
-})->name('registro');
+
+
+Route::get('/registro', function () {return view('registro');})->name('registro');
 
 /* INICIO CLIENTES */
 Route::get('/clientes', function () {
@@ -33,5 +33,9 @@ Route::get('/clientes', function () {
 Route::get('/cadastra_cliente', function () {
     return view('clientes.cadastra_cliente');
 })->name('cadastra_cliente');
+
+Route::post('/cadastra_cliente/add', [App\Http\Controllers\ClientesController::class, 'add'])->name('add');
+
+
 
 /* FIM CLIENTES */

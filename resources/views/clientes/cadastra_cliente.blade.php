@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8" style="margin-bottom: 50px; margin-top:15px;">
-            <form>
+            <form action="{{ route('add')}}" method="post">
                 <br>
                 <h1 class="text-center"> Novo cliente </h1>
                 <div class="form-group">
