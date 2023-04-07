@@ -26,4 +26,18 @@ class TiposObjetoController extends Controller
         }
 
     }
+    public function edit($id){
+        $tipoObjeto = TipoObjeto::findOrFail($id);
+        return view('tiposobjetos.cadastra_tipo', ['tipo_objeto' => $tipoObjeto]);
+    }
+
+    public function update(Request $request, $id){
+        try {
+            $tipoObjeto = TipoObjeto::findOrFail($id);
+            $tipoObjeto->update($request->all());
+            return redirect()->route('tipo_objeto')->with('success', 'Cadastro atualizado com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['Cliente não pode ser atualizado']);
+        }  
+    }
 }

@@ -31,8 +31,8 @@
                 <td class="d-none d-md-table-cell">ADMINISTRADOR</td> 
                 <td class="d-none d-md-table-cell">{{ date("d/m/Y", strtotime($tipo->created_at)) }}</td> 
                 <td class="d-none d-md-table-cell">{{ date("d/m/Y", strtotime($tipo->updated_at)) }}</td> 
-                <td class="d-none d-md-table-cell">
-                </td>              
+                <td><a href="{{ route('edita_tipo',['id'=>$tipo->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>
+              
                 <td class="d-none d-md-table-cell">
                 </td>
               </tr>
