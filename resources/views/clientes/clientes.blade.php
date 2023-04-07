@@ -16,7 +16,7 @@
       <a href="{{ route('cadastra_cliente') }}"><button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#novoClienteModal">Novo Cliente</button></a>
       <hr>
       <div class="table-responsive-sm" style="max-width: 95%;">
-        <table class="table">
+        <table class="table" id="clientes">
           <thead>
             <tr>
               <th scope="col">Nome</th>
