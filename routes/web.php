@@ -25,7 +25,13 @@ Route::get('/registro', function () {
 return view('registro');
 })->name('registro');
 
-
+/* INICIO CLIENTES */
 Route::get('/clientes', function () {
-    return view('clientes');
+    return view('clientes.clientes');
     })->name('clientes');
+
+Route::get('/cadastra_cliente', function () {
+    return view('clientes.cadastra_cliente');
+})->name('cadastra_cliente');
+
+/* FIM CLIENTES */
