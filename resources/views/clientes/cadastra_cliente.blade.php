@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8" style="margin-bottom: 50px; margin-top:15px;">
             <form action="{{ route('add')}}" method="post">
+                @csrf
                 <br>
                 <h1 class="text-center"> Novo cliente </h1>
                 <div class="form-group">
@@ -60,8 +61,8 @@
                   <input type="text" class="form-control" id="estado" name="estado">
                 </div>
                 <button type="button" class="btn btn-danger btn-lg">Voltar</button>
-                <button type="button" class="btn btn-success btn-lg">Salvar</button>
-              </form>
+                <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+            </form>
         </div>
     </div>
 </div>
