@@ -39,7 +39,13 @@
                 <td>{{ date("d/m/Y", strtotime($cliente->created_at)) }}</td> 
                 <td>{{ date("d/m/Y", strtotime($cliente->updated_at)) }}</td> 
                 <td><a href="{{ route('edit',['id'=>$cliente->id])}}" class="btn btn-success">Editar</a></td>              
-                  <td><button class="btn btn-danger"> Deletar </button></td>
+                <td>
+                  <form action="{{ route('delete',['id'=>$cliente->id])}}" method="post">
+                      @csrf
+                      @method('delete')
+                      <button class="btn btn-danger"> Deletar </button>
+              </form>
+              </td>
               </tr>
             @endforeach
           </tbody>
