@@ -41,7 +41,7 @@
                     <div class='dashboard-nav-dropdown-menu'>
                         <a href="{{route('clientes') }}" class="dashboard-nav-dropdown-item">Clientes</a>
                         <a href="{{route('tipo_objeto') }}" class="dashboard-nav-dropdown-item">Tipos de objeto</a>
-                        <a href="#" class="dashboard-nav-dropdown-item">All</a>
+                        <a href="{{route('prestadores') }}" class="dashboard-nav-dropdown-item">Prestadores</a>
                 </div>
                 <div class='dashboard-nav-dropdown'>
                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
