@@ -47,7 +47,7 @@ class PrestadoresController extends Controller
     public function delete($id){
         $prestadores = Prestadores::findOrFail($id);      
         $prestadores->delete();
-        return redirect()->route('tipo_objeto')->with('success', 'Registro deletado');
+        return redirect()->route('prestadores')->with('success', 'Registro deletado');
     }
 
 
