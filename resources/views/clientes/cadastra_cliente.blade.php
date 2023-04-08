@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                   <label for="cnpj">CNPJ:</label>
-                  <input type="text" class="form-control" id="sobrenome" name="cnpj" value="{{ $cliente->cnpj}}">
+                  <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ $cliente->cnpj}}">
                 </div>
                 <div class="form-group">
                   <label for="razao_social">Razão Social:</label>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group">
                   <label for="cnpj">CNPJ:</label>
-                  <input type="text" class="form-control" id="sobrenome" name="cnpj">
+                  <input type="text" class="form-control" id="cnpj" name="cnpj">
                 </div>
                 <div class="form-group">
                   <label for="razao_social">Razão Social:</label>
