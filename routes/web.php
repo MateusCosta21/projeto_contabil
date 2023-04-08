@@ -49,7 +49,9 @@ Route::delete('/tipos_objetos/delete/{id}', [App\Http\Controllers\TiposObjetoCon
 Route::get('/prestadores', [App\Http\Controllers\PrestadoresController::class, 'index'])->name('prestadores')->middleware('auth');
 Route::get('/prestadores/novo', [App\Http\Controllers\PrestadoresController::class, 'new'])->name('novo_prestador')->middleware('auth');
 Route::post('/prestadores/add', [App\Http\Controllers\PrestadoresController::class, 'add'])->name('adiciona_prestador')->middleware('auth');
-
+Route::get('/prestadores/{id}/edit', [App\Http\Controllers\PrestadoresController::class, 'edit'])->name('edita_prestador')->middleware('auth');;
+Route::post('/prestadores/update/{id}', [App\Http\Controllers\PrestadoresController::class, 'update'])->name('update_prestador')->middleware('auth');;
+Route::delete('/prestadores/delete/{id}', [App\Http\Controllers\PrestadoresController::class, 'delete'])->name('delete_prestador')->middleware('auth');;
 
 
 
