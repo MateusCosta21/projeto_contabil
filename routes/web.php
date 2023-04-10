@@ -23,6 +23,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/registro', function () {return view('registro');})->name('registro')->middleware('auth');
 
+Route::post('/registrar', [App\Http\Controllers\UsuariosController::class, 'add'])->name('registrar');
+
+
 /* MENU CADASTROS */
 
 
