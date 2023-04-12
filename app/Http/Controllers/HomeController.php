@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TipoObjeto;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -18,7 +19,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 
     /**
      * Show the application dashboard.
@@ -29,6 +30,13 @@ class HomeController extends Controller
     {
         $tiposObjetos = TipoObjeto::all();
         $clientes = Cliente::all();
-        return view('home', compact('tiposObjetos','clientes'));
+        $objetosAguardando = DB::table('objetos')->where('status', '=', 'Aguardando')->count();
+        return view('home', compact('tiposObjetos', 'clientes', 'objetosAguardando'));
+    }
+
+    public function countObjetosAguardando()
+    {
+        $count = DB::table('objetos')->where('status', '=', 'Aguardando')->count();
+        return view('home', ['count' => $count]);
     }
 }

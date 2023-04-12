@@ -24,7 +24,6 @@ class PrestadoresController extends Controller
         $prestador = $prestador->create($request->all());
         return redirect()->route('prestadores')->with('success', 'Cadastro realizado com sucesso!');
         } catch (\Exception $e) {
-            dd($e);
             return redirect()->back()->withInput()->withErrors(['Cadastro não pode ser realizado']);
         }
     }

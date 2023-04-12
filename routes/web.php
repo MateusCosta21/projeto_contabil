@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,7 @@ Route::delete('/prestadores/delete/{id}', [App\Http\Controllers\PrestadoresContr
 
 
 
+Route::post('/objeto/add', [App\Http\Controllers\ObjetoController::class, 'add'])->name('adiciona_objeto')->middleware('auth');
 
 
 

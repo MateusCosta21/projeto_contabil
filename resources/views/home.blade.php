@@ -10,7 +10,7 @@
                             <i class="fas fa-cogs fa-3x text-white"></i>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <div class="huge text-white">30</div>
+                            <div class="huge text-white">{{ $objetosAguardando }}</div>
                         </div>
                         <div class="text-center text-white">Em processamento</div>
                     </div>
@@ -96,18 +96,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post" action="{{route('adiciona_objeto')}}">
+                        @csrf
+                        <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="status" value="Aguardando">
                         <div class="form-group">
-                            <label for="tipoObjeto">Tipo de objeto</label>
-                            <select class="form-control" id="tipoObjeto" name="tipoObjeto">
+                            <label for="tipo_id">Tipo de objeto</label>
+                            <select class="form-control" id="tipo_id" name="tipo_id">
                                 @foreach ($tiposObjetos as $tipoObjeto)
                                     <option value="{{ $tipoObjeto->id }}">{{ $tipoObjeto->nome }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="remetente">Remetente</label>
-                            <select class="form-control" id="tipoObjeto" name="tipoObjeto">
+                            <label for="remetente">Remetente/Destinatário:</label>
+                            <select class="form-control" id="cliente_id" name="cliente_id">
                                 @foreach ($clientes as $cliente)
                                     <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
                                 @endforeach
@@ -122,29 +125,30 @@
                             <input type="text" class="form-control" name="observacao" id="observacao">
                         </div>
                         <div class="form-group">
-                            <label for="observacao">Data envio</label>
+                            <label for="data_envio">Data envio</label>
+                            <input type="date" class="form-control" name="data_envio" id="data_envio"
+                                min="{{ date('Y-m-d', strtotime('-1 day')) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="data_limite">Data Limite para entrega</label>
                             <input type="date" class="form-control" name="data_limite" id="data_limite"
                                 min="{{ date('Y-m-d', strtotime('-1 day')) }}">
                         </div>
                         <div class="form-group">
-                            <label for="observacao">Data Limite para entrega</label>
-                            <input type="date" class="form-control" name="data_limite" id="data_limite"
-                                min="{{ date('Y-m-d', strtotime('-1 day')) }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="enderecamento">Selecione o Tipo de Endereçamento da Correspondência</label>
-                            <select class="form-control" id="enderecamento" name="enderecamento">
+                            <label for="op_envio">Selecione o Tipo de Endereçamento da Correspondência</label>
+                            <select class="form-control" id="op_envio" name="op_envio">
                                 <option value="1">Da Pontual para o Cliente</option>
                                 <option value="2">Do Cliente para a Pontual</option>
                                 <option value="3">Da Pontual para o Cliente e retorna para a Pontual</option>
                             </select>
                         </div>
-                    </form>
-                </div>
+             
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
+            </form>
+        </div>
             </div>
         </div>
     </div>
