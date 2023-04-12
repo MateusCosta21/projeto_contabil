@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TipoObjeto;
+use App\Models\Cliente;
+
 
 class HomeController extends Controller
 {
@@ -15,6 +18,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+    
 
     /**
      * Show the application dashboard.
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tiposObjetos = TipoObjeto::all();
+        $clientes = Cliente::all();
+        return view('home', compact('tiposObjetos','clientes'));
     }
 }
