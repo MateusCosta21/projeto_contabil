@@ -173,8 +173,18 @@
                             @foreach ($retornaCadastro as $objeto)
                                 @if ($objeto->op_envio == 1)
                                     <tr>
-                                        <td class="text-wrap">{{ $objeto->descricao }}</td>
-                                        <td>{{ $objeto->cliente->nome }}</td>
+                                        <td class="text-truncate">
+                                            <span class="tooltip-toggle" title="{{ $objeto->descricao }}"
+                                                data-full-text="{{ $objeto->descricao }}">
+                                                {{ strlen($objeto->descricao) > 25 ? substr($objeto->descricao, 0, 25) . '...' : $objeto->descricao}}
+                                            </span>
+                                        </td>
+                                        <td class="text-truncate">
+                                            <span class="tooltip-toggle" title="{{ $objeto->cliente->nome }}"
+                                                data-full-text="{{ $objeto->cliente->nome }}">
+                                                {{ strlen($objeto->cliente->nome) > 25 ? substr($objeto->cliente->nome, 0, 25) . '...' : $objeto->cliente->nome}}
+                                            </span>
+                                        </td>
                                         <td class="text-wrap">{{ $objeto->tipo->nome }}</td>
                                         <td>Ação</td>
                                     </tr>
@@ -205,14 +215,23 @@
                             @foreach ($retornaCadastro as $objeto)
                                 @if ($objeto->op_envio == 2)
                                     <tr>
-                                        <td>{{ $objeto->descricao }}</td>
-                                        <td>{{ $objeto->cliente->nome }}</td>
-                                        <td>{{ $objeto->tipo->nome }}</td>
+                                        <td class="text-truncate">
+                                            <span class="tooltip-toggle" title="{{ $objeto->descricao }}"
+                                                data-full-text="{{ $objeto->descricao }}">
+                                                {{ strlen($objeto->descricao) > 25 ? substr($objeto->descricao, 0, 25) . '...' : $objeto->descricao}}
+                                            </span>
+                                        </td>
+                                        <td class="text-truncate">
+                                            <span class="tooltip-toggle" title="{{ $objeto->cliente->nome }}"
+                                                data-full-text="{{ $objeto->cliente->nome }}">
+                                                {{ strlen($objeto->cliente->nome) > 25 ? substr($objeto->cliente->nome, 0, 25) . '...' : $objeto->cliente->nome}}
+                                            </span>
+                                        </td>
+                                        <td class="text-wrap">{{ $objeto->tipo->nome }}</td>
                                         <td>Ação</td>
                                     </tr>
                                 @endif
                             @endforeach
-                        </tbody>
                     </table>
                 </div>
             </div>
