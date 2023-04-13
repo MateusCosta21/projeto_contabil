@@ -80,7 +80,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <button type="button" class="btn btn-info btn-lg mt-5 ml-3" data-toggle="modal" data-target="#cadastroModal">
         <i class="fas fa-plus"></i> Cadastrar objeto
     </button>
@@ -96,7 +96,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{route('adiciona_objeto')}}">
+                    <form method="post" action="{{ route('adiciona_objeto') }}">
                         @csrf
                         <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
                         <input type="hidden" name="status" value="Aguardando">
@@ -142,62 +142,81 @@
                                 <option value="3">Da Pontual para o Cliente e retorna para a Pontual</option>
                             </select>
                         </div>
-             
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Salvar</button>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="panel panel-default">
-                    <div class="card-header">
-                        <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">Na
-                                Pontual</small></h4>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Objeto</th>
-                                    <th>Destinatário</th>
-                                    <th>Tipo de Objeto</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="panel panel-default">
+                <div class="card-header">
+                    <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">Na
+                            Pontual</small></h4>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="panel panel-default">
-                    <div class="card-header">
-                        <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
-                                cliente</small></h4>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Objeto</th>
-                                    <th>Destinatário</th>
-                                    <th>Tipo de Objeto</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="panel-body">
+                    <table class="table" id="op1">
+                        <thead>
+                            <tr>
+                                <th>Objeto</th>
+                                <th>Destinatário</th>
+                                <th>Tipo de Objeto</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($retornaCadastro as $objeto)
+                                @if ($objeto->op_envio == 1)
+                                    <tr>
+                                        <td class="text-wrap">{{ $objeto->descricao }}</td>
+                                        <td>{{ $objeto->cliente->nome }}</td>
+                                        <td class="text-wrap">{{ $objeto->tipo->nome }}</td>
+                                        <td>Ação</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="panel panel-default">
+                <div class="card-header">
+                    <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
+                            cliente</small></h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Objeto</th>
+                                <th>Destinatário</th>
+                                <th>Tipo de Objeto</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($retornaCadastro as $objeto)
+                                @if ($objeto->op_envio == 2)
+                                    <tr>
+                                        <td>{{ $objeto->descricao }}</td>
+                                        <td>{{ $objeto->cliente->nome }}</td>
+                                        <td>{{ $objeto->tipo->nome }}</td>
+                                        <td>Ação</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection

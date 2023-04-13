@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TipoObjeto;
 use App\Models\Cliente;
+Use App\Models\Objetos;
 use Illuminate\Support\Facades\DB;
 
 
@@ -30,8 +31,14 @@ class HomeController extends Controller
     {
         $tiposObjetos = TipoObjeto::all();
         $clientes = Cliente::all();
+        $retornaCadastro = Objetos::get();
         $objetosAguardando = DB::table('objetos')->where('status', '=', 'Aguardando')->count();
-        return view('home', compact('tiposObjetos', 'clientes', 'objetosAguardando'));
+        return view('home', compact('tiposObjetos', 'clientes', 'objetosAguardando', 'retornaCadastro'));
+
+       /* public function index(){
+            $clientes = Cliente::get();
+            return view('clientes.clientes',['clientes' => $clientes]);
+        }*/
     }
 
     public function countObjetosAguardando()
