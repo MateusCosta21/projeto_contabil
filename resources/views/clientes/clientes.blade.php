@@ -30,20 +30,11 @@
                         <tbody>
                             @foreach ($clientes as $cliente)
                                 <tr>
-                                    <td class="text-truncate">
-                                      <span class="tooltip-toggle" title="{{ $cliente->nome }}"
-                                          data-full-text="{{  $cliente->nome }}">
-                                          {{ strlen( $cliente->nome) > 25 ? substr( $cliente->nome, 0, 25) . '...' :  $cliente->nome }}
-                                      </span>
-                                  </td>
-                                    <td class="text-truncate d-none d-sm-table-cell">
-                                        <span class="tooltip-toggle" title="{{ $cliente->razao_social }}"
-                                            data-full-text="{{ $cliente->razao_social }}">
-                                            {{ strlen($cliente->razao_social) > 25 ? substr($cliente->razao_social, 0, 25) . '...' : $cliente->razao_social }}
-                                        </span>
-                                    </td>
+                                
+                                    <td class="text-wrap">{{$cliente->nome}}</td>
+                                    <td class="text-wrap d-none d-sm-table-cell">{{$cliente->razao_social}}</td>
                                     <td class="d-none d-sm-table-cell">{{ $cliente->cnpj }}</td>
-                                    <td class="d-none d-sm-table-cell">{{ $cliente->usuario->name }}</td>
+                                    <td class="text-wrap d-none d-sm-table-cell">{{$cliente->usuario->name}}</td>
                                     <td class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($cliente->created_at)) }}
                                     </td>
                                     <td class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($cliente->updated_at)) }}

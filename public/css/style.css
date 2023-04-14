@@ -552,3 +552,33 @@ h1, .h1 {
     z-index: 1;
 
 }
+.table-responsive {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+#op1 {
+    width: 100%;
+ }
+
+ #op1 td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+ }
+@media (max-width: 767px) {
+    .table-responsive {
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .table-responsive::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .long-text {
+    word-wrap: break-word;
+  }
