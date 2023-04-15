@@ -171,7 +171,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($retornaCadastro as $objeto)
-                                        @if ($objeto->op_envio == 1)
+                                        @if ($objeto->op_envio == 1 && $objeto->status == 'Aguardando')
                                             <tr>
                                                 <td class="text-wrap">{{ $objeto->descricao }}</td>
 
@@ -186,6 +186,7 @@
                                                         </button>
                                                     </div>
                                                 </td>
+
                                             </tr>
                                             <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}"
                                                 tabindex="-1" role="dialog"
@@ -239,26 +240,30 @@
                                                         </div>
                                                         <div class="modal-footer" id="botoes">
                                                             <button title="Editar Objeto" type="button"
-                                                                class="btn btn-primary btn-sm" data-dismiss="modal"><i
-                                                                    class="fa fa-save"></i> Salvar</button>
+                                                                class="btn btn-secondary btn-sm" data-dismiss="modal"><i
+                                                                    class="fa fa-edit"></i> Editar</button>
                                                             <button title="Imprimir Protocolo" type="button"
                                                                 class="btn btn-info btn-sm"><i class="fa fa-print"
                                                                     aria-hidden="true"></i> Imprimir Protocolo</button>
-                                                            <a onclick="return confirm('Tem certeza que deseja cancelar o envio deste objeto?')"
-                                                                href="controller/cancelar_objeto.php?objeto_id=11412">
-                                                                <button type="button" class="btn btn-danger btn-sm"><i
-                                                                        class="fa fa-ban"></i> Cancelar Envio</button>
-                                                            </a>
+
+                                                                    <form action="{{ route('deletaRota', ['id' => $objeto->id]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Cancelar envio</button>
+                                                                    </form>
                                                         </div>
-                                                        <center> <a
-                                                                onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
-                                                                href="controller/incluir_rota.php?objeto_id=11412"
-                                                                alt="Incluir na rota">
-                                                                <button type="button"
-                                                                    class="btn btn-success btn-sm text-center"><i
-                                                                        class="fa fa-motorcycle"></i> Incluir na
-                                                                    Rota</button>
-                                                            </a></center>
+                                                        <center>
+                                                            <form method="POST" action="{{ route('enviaRota') }}">
+                                                                @csrf
+                                                                <input type="hidden" name="objeto_id"
+                                                                    value="{{ $objeto->id }}">
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
+                                                                    class="btn btn-success btn-sm text-center">
+                                                                    <i class="fa fa-motorcycle"></i> Incluir na Rota
+                                                                </button>
+                                                            </form>
+                                                        </center>
                                                     </div>
                                                 </div>
                                             </div>
@@ -353,8 +358,8 @@
                                                 </div>
                                                 <div class="modal-footer" id="botoes">
                                                     <button title="Editar Objeto" type="button"
-                                                        class="btn btn-primary btn-sm" data-dismiss="modal"><i
-                                                            class="fa fa-save"></i> Salvar</button>
+                                                        class="btn btn-secondary btn-sm" data-dismiss="modal"><i
+                                                            class="fa fa-edit"></i> Editar</button>
                                                     <button title="Imprimir Protocolo" type="button"
                                                         class="btn btn-info btn-sm"><i class="fa fa-print"
                                                             aria-hidden="true"></i> Imprimir Protocolo</button>
@@ -386,26 +391,45 @@
     </div>
     </div>
     </div>
-    <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="informacaoObjeto{{ $objeto->id }}" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="informacaoObjeto{{ $objeto->id }}">Informações do objeto
-                        #{{ $objeto->id }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Conteúdo do modal -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="card-header">
+                <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos em rota <small
+                        class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
+
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive overflow-auto">
+                    <table class="table table-sm" id="objetos_rota">
+                        <thead>
+                            <tr>
+                                <th class="col-12 col-sm-6">Destinatário</th>
+                                <th class="col-12 col-sm-6">Objeto</th>
+                                <th class="d-none d-sm-table-cell">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="font-tamanho">
+                            @foreach ($retornaCadastro as $objeto)
+                                @if ($objeto->status == 'Em rota')
+                                    <tr>
+                                        <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
+                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
+                                            <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
+                                            <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
+                                            <br>
+                                            <strong>Observação:</strong>{{ $objeto->observacao }}<br>
+                                            <strong>Cadastrado por:</strong>{{ $objeto->usuario->name }}<br>
+                                            <strong>Data
+                                                limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
+                                        </td>
+                                        <td class="d-none d-sm-table-cell"> acao </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 @endsection

@@ -582,3 +582,32 @@ h1, .h1 {
   .long-text {
     word-wrap: break-word;
   }
+
+  #op1{
+    font-size:12px;
+  }
+
+  #font-tamanho{
+    font-size:12px;
+  }
+
+  .dataTables_filter input {
+ 
+        height:30px;
+}
+.dataTables_paginate {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.dataTables_paginate .paginate_button {
+    padding: 5px 10px;
+}
+.dataTables_length select {
+    font-size: 12px;
+    height: 25px;
+}
+.dataTables_length label {
+    font-size: 12px;
+}
+

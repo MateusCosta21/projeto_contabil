@@ -64,6 +64,8 @@ Route::delete('/prestadores/delete/{id}', [App\Http\Controllers\PrestadoresContr
 
 
 Route::post('/objeto/add', [App\Http\Controllers\ObjetoController::class, 'add'])->name('adiciona_objeto')->middleware('auth');
+Route::post('/objeto/enviaRota', [App\Http\Controllers\ObjetoController::class, 'enviaRota'])->name('enviaRota')->middleware('auth');
+Route::delete('/objeto/delete/{id}', [App\Http\Controllers\ObjetoController::class, 'delete'])->name('deletaRota')->middleware('auth');
 
 
 
