@@ -29,7 +29,7 @@
                             <i class="fa fa-motorcycle fa-3x text-white"></i>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <div class="huge text-white">30</div>
+                            <div class="huge text-white">{{ $objetosEmRota }}</div>
                         </div>
                         <div class="text-center text-white">Em rota</div>
                     </div>
