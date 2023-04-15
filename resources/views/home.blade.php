@@ -166,8 +166,7 @@
                                     <tr>
                                         <th>Objeto</th>
                                         <th>Destinatário</th>
-                                        <th>Tipo de Objeto</th>
-                                        <th class="d-none d-sm-table-cell">Ações</th>
+                                        <th class="d-none d-sm-table-cell">Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -178,96 +177,235 @@
 
                                                 <td class="text-wrap">{{ $objeto->cliente->nome }}</td>
 
-                                                <td class="text-wrap">{{ $objeto->tipo->nome }}</td>
                                                 <td>
                                                     <div class="btn-group d-block" role="group">
-                                                        <button title="Editar Objeto" type="button"
-                                                            class="btn btn-primary btn-sm" data-toggle="modal"
-                                                            data-target="#editarObjeto11412"><i
-                                                                class="fa fa-edit"></i></button>
-                                                        <button title="Imprimir Protocolo" type="button"
-                                                            class="btn btn-info btn-sm" data-toggle="modal"
-                                                            data-target="#imprimirProtocolo11412"><i class="fa fa-print"
-                                                                aria-hidden="true"></i></button>
-                                                        <a onclick="return confirm('Tem certeza que deseja cancelar o envio deste objeto?')"
-                                                            href="controller/cancelar_objeto.php?objeto_id=11412">
-                                                            <button type="button" class="btn btn-danger btn-sm"><i
-                                                                    class="fa fa-ban"></i></button>
-                                                        </a>
-                                                        <a onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
-                                                            href="controller/incluir_rota.php?objeto_id=11412"
-                                                            alt="Incluir na rota">
-                                                            <button type="button" class="btn btn-success btn-sm"><i
-                                                                    class="fa fa-motorcycle"></i></button>
-                                                        </a>
+                                                        <button type="button" class="btn btn-primary btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#informacaoObjeto{{ $objeto->id }}">
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <div class="panel panel-default">
-                    <div class="card-header">
-                        <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
-                                Cliente</small></h4>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive overflow-auto">
-                            <table class="table table-sm" id="op1">
-                                <thead>
-                                    <tr>
-                                        <th>Objeto</th>
-                                        <th>Destinatário</th>
-                                        <th>Tipo de Objeto</th>
-                                        <th class="d-none d-sm-table-cell">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($retornaCadastro as $objeto)
-                                        @if ($objeto->op_envio == 2)
-                                            <tr>
-                                                <td class="text-wrap">{{ $objeto->descricao }}</td>
+                                            <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}"
+                                                tabindex="-1" role="dialog"
+                                                aria-labelledby="informacaoObjeto{{ $objeto->id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="informacaoObjeto{{ $objeto->id }}">Informações do
+                                                                objeto #{{ $objeto->id }}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <label for="id">Número</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="id" name="id"
+                                                                        value="{{ $objeto->id }}"readonly>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="id">Objeto</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="objeto" name="objeto"
+                                                                        value="{{ $objeto->descricao }}"readonly>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="id">Tipo</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="objeto" name="objeto"
+                                                                        value="{{ $objeto->tipo->nome }}"readonly>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="destinatario">Destinatário:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="destinatario" name="destinatario"
+                                                                        value="{{ $objeto->cliente->nome }}" readonly>
+                                                                </div>
 
-                                                <td class="text-wrap">{{ $objeto->cliente->nome }}</td>
-
-                                                <td class="text-wrap">{{ $objeto->tipo->nome }}</td>
-                                                <td>
-                                                    <div class="btn-group d-block" role="group">
-                                                        <button title="Editar Objeto" type="button"
-                                                            class="btn btn-primary btn-sm" data-toggle="modal"
-                                                            data-target="#editarObjeto11412"><i
-                                                                class="fa fa-edit"></i></button>
-                                                        <button title="Imprimir Protocolo" type="button"
-                                                            class="btn btn-info btn-sm" data-toggle="modal"
-                                                            data-target="#imprimirProtocolo11412"><i class="fa fa-print"
-                                                                aria-hidden="true"></i></button>
-                                                        <a onclick="return confirm('Tem certeza que deseja cancelar o envio deste objeto?')"
-                                                            href="controller/cancelar_objeto.php?objeto_id=11412">
-                                                            <button type="button" class="btn btn-danger btn-sm"><i
-                                                                    class="fa fa-ban"></i></button>
-                                                        </a>
-                                                        <a onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
-                                                            href="controller/incluir_rota.php?objeto_id=11412"
-                                                            alt="Incluir na rota">
-                                                            <button type="button" class="btn btn-success btn-sm"><i
-                                                                    class="fa fa-motorcycle"></i></button>
-                                                        </a>
+                                                                <div class="form-group">
+                                                                    <label for="id">Cadastrado por:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="id"
+                                                                        value="{{ $objeto->usuario->name }}"name="id"
+                                                                        readonly>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer" id="botoes">
+                                                            <button title="Editar Objeto" type="button"
+                                                                class="btn btn-primary btn-sm" data-dismiss="modal"><i
+                                                                    class="fa fa-save"></i> Salvar</button>
+                                                            <button title="Imprimir Protocolo" type="button"
+                                                                class="btn btn-info btn-sm"><i class="fa fa-print"
+                                                                    aria-hidden="true"></i> Imprimir Protocolo</button>
+                                                            <a onclick="return confirm('Tem certeza que deseja cancelar o envio deste objeto?')"
+                                                                href="controller/cancelar_objeto.php?objeto_id=11412">
+                                                                <button type="button" class="btn btn-danger btn-sm"><i
+                                                                        class="fa fa-ban"></i> Cancelar Envio</button>
+                                                            </a>
+                                                        </div>
+                                                        <center> <a
+                                                                onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
+                                                                href="controller/incluir_rota.php?objeto_id=11412"
+                                                                alt="Incluir na rota">
+                                                                <button type="button"
+                                                                    class="btn btn-success btn-sm text-center"><i
+                                                                        class="fa fa-motorcycle"></i> Incluir na
+                                                                    Rota</button>
+                                                            </a></center>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                                </div>
+                                            </div>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
+                    </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="panel panel-default">
+            <div class="card-header">
+                <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
+                        Cliente</small></h4>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive overflow-auto">
+                    <table class="table table-sm" id="op1">
+                        <thead>
+                            <tr>
+                                <th>Objeto</th>
+                                <th>Destinatário</th>
+                                <th class="d-none d-sm-table-cell">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($retornaCadastro as $objeto)
+                                @if ($objeto->op_envio == 2)
+                                    <tr>
+                                        <td class="text-wrap">{{ $objeto->descricao }}</td>
+
+                                        <td class="text-wrap">{{ $objeto->cliente->nome }}</td>
+
+                                        <td>
+                                            <div class="btn-group d-block" role="group">
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                    data-target="#informacaoObjeto{{ $objeto->id }}">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="informacaoObjeto{{ $objeto->id }}"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="informacaoObjeto{{ $objeto->id }}">
+                                                        Informações do
+                                                        objeto #{{ $objeto->id }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="id">Número</label>
+                                                            <input type="text" class="form-control" id="id"
+                                                                name="id" value="{{ $objeto->id }}"readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="id">Objeto</label>
+                                                            <input type="text" class="form-control" id="objeto"
+                                                                name="objeto" value="{{ $objeto->descricao }}"readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="id">Tipo</label>
+                                                            <input type="text" class="form-control" id="objeto"
+                                                                name="objeto" value="{{ $objeto->tipo->nome }}"readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="destinatario">Destinatário:</label>
+                                                            <input type="text" class="form-control" id="destinatario"
+                                                                name="destinatario" value="{{ $objeto->cliente->nome }}"
+                                                                readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="id">Cadastrado por:</label>
+                                                            <input type="text" class="form-control" id="id"
+                                                                value="{{ $objeto->usuario->name }}"name="id"
+                                                                readonly>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer" id="botoes">
+                                                    <button title="Editar Objeto" type="button"
+                                                        class="btn btn-primary btn-sm" data-dismiss="modal"><i
+                                                            class="fa fa-save"></i> Salvar</button>
+                                                    <button title="Imprimir Protocolo" type="button"
+                                                        class="btn btn-info btn-sm"><i class="fa fa-print"
+                                                            aria-hidden="true"></i> Imprimir Protocolo</button>
+                                                    <a onclick="return confirm('Tem certeza que deseja cancelar o envio deste objeto?')"
+                                                        href="controller/cancelar_objeto.php?objeto_id=11412">
+                                                        <button type="button" class="btn btn-danger btn-sm"><i
+                                                                class="fa fa-ban"></i> Cancelar Envio</button>
+                                                    </a>
+                                                </div>
+                                                <center> <a
+                                                        onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
+                                                        href="controller/incluir_rota.php?objeto_id=11412"
+                                                        alt="Incluir na rota">
+                                                        <button type="button"
+                                                            class="btn btn-success btn-sm text-center"><i
+                                                                class="fa fa-motorcycle"></i> Incluir na
+                                                            Rota</button>
+                                                    </a></center>
+                                            </div>
+                                        </div>
+                                    </div>
+                </div>
+            </div>
+            @endif
+            @endforeach
+            </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}" tabindex="-1" role="dialog"
+        aria-labelledby="informacaoObjeto{{ $objeto->id }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="informacaoObjeto{{ $objeto->id }}">Informações do objeto
+                        #{{ $objeto->id }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do modal -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+@endsection

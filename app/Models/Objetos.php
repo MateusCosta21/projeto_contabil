@@ -23,4 +23,9 @@ class Objetos extends Model
     {
         return $this->belongsTo(TipoObjeto::class, 'tipo_id');
     }
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
+
 }
