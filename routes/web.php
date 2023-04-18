@@ -66,6 +66,8 @@ Route::delete('/prestadores/delete/{id}', [App\Http\Controllers\PrestadoresContr
 Route::post('/objeto/add', [App\Http\Controllers\ObjetoController::class, 'add'])->name('adiciona_objeto')->middleware('auth');
 Route::post('/objeto/enviaRota', [App\Http\Controllers\ObjetoController::class, 'enviaRota'])->name('enviaRota')->middleware('auth');
 Route::delete('/objeto/delete/{id}', [App\Http\Controllers\ObjetoController::class, 'delete'])->name('deletaRota')->middleware('auth');
+Route::post('/objeto/finaliza_processo', [App\Http\Controllers\ObjetoController::class, 'finaliza_processo'])->name('finaliza_processo')->middleware('auth');
+
 
 Route::get('/novo_modal', [App\Http\Controllers\ModalsController::class, 'index'])->name('novo_modal')->middleware('auth');;
 

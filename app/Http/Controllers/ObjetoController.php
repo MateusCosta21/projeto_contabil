@@ -33,6 +33,25 @@ class ObjetoController extends Controller
         return redirect()->back()->with('success', 'Objeto atualizado com sucesso.'); // Redireciona de volta para a página anterior com uma mensagem de sucesso
     }
 
+    public function finaliza_processo()
+    {
+        $status = request('statusSelect');
+        $objeto = Objetos::find(request('objeto_id'));
+    
+        if ($status == 1) {
+            $objeto->status = 'No condominio/Cliente';
+        } elseif ($status == 2) {
+            $objeto->status = 'Entregue';
+        }
+    
+        $objeto->save();
+    
+        // redireciona o usuário para alguma página de sucesso
+        return redirect()->back()->with('success', 'Objeto atualizado com sucesso.'); // Redireciona de volta para a página anterior com uma mensagem de sucesso
+    }
+
+    
+
     public function delete($id){
         $objeto = Objetos::findOrFail($id);      
         $objeto->delete();
