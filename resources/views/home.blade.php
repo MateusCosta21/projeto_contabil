@@ -208,16 +208,20 @@
                                             <strong>Data
                                                 limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
                                         </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
-                                                data-target="#atualizarStatusModal{{ $objeto->id }}">
+                                        <td class="d-none d-sm-table-cell btn-group">
+                                            <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#atualizarStatusModal{{ $objeto->id }}">
                                                 <i class="fas fa-sync-alt"></i>
                                             </button>
-                                            <button title="Historico" type="button" class="btn btn-primary btn-sm"
-                                                data-dismiss="modal"><i class="fa fa-search"></i></button>
-
-                                            <button title="Remover" type="button" class="btn btn-danger btn-sm"
-                                                data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+                                            <button title="Historico" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                            <form action="{{ route('deletaRota', ['id' => $objeto->id]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
+                                                @csrf
+                                                @method('delete')
+                                                <button title="Remover" type="submit" class="btn btn-danger btn-sm" data-dismiss="modal">
+                                                    <i class="fa fa-times-circle"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @include('layouts.modals', ['objeto' => $objeto])
