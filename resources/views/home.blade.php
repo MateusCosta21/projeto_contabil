@@ -190,7 +190,89 @@
                                                 </td>
 
                                             </tr>
-                                        
+                                            <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}"
+                                                tabindex="-1" role="dialog"
+                                                aria-labelledby="informacaoObjeto{{ $objeto->id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="informacaoObjeto{{ $objeto->id }}">Informações do
+                                                                objeto #{{ $objeto->id }}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <label for="id">Número</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="id" name="id"
+                                                                        value="{{ $objeto->id }}"readonly>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="id">Objeto</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="objeto" name="objeto"
+                                                                        value="{{ $objeto->descricao }}"readonly>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="id">Tipo</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="objeto" name="objeto"
+                                                                        value="{{ $objeto->tipo->nome }}"readonly>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="destinatario">Destinatário:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="destinatario" name="destinatario"
+                                                                        value="{{ $objeto->cliente->nome }}" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="id">Cadastrado por:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="id"
+                                                                        value="{{ $objeto->usuario->name }}"name="id"
+                                                                        readonly>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer" id="botoes">
+                                                            <button title="Editar Objeto" type="button"
+                                                                class="btn btn-secondary btn-sm" data-dismiss="modal"><i
+                                                                    class="fa fa-edit"></i> Editar</button>
+                                                            <button title="Imprimir Protocolo" type="button"
+                                                                class="btn btn-info btn-sm"><i class="fa fa-print"
+                                                                    aria-hidden="true"></i> Imprimir Protocolo</button>
+
+                                                            <form
+                                                                action="{{ route('deletaRota', ['id' => $objeto->id]) }}"
+                                                                method="post"
+                                                                onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-danger btn-sm"><i
+                                                                        class="fa fa-ban"></i> Cancelar envio</button>
+                                                            </form>
+                                                        </div>
+                                                        <center>
+                                                            <form method="POST" action="{{ route('enviaRota') }}">
+                                                                @csrf
+                                                                <input type="hidden" name="objeto_id"
+                                                                    value="{{ $objeto->id }}">
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
+                                                                    class="btn btn-success btn-sm text-center">
+                                                                    <i class="fa fa-motorcycle"></i> Incluir na Rota
+                                                                </button>
+                                                            </form>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
                         </div>
                     </div>
                     @endif
@@ -349,7 +431,7 @@
                                         <td class="d-none d-sm-table-cell">
                                             <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
                                                 data-target="#atualizarStatusModal">
-                                                <i class="fas fa-sync-alt"></i>
+                                                <i class="fas fa-sync-alt"></i> Atualizar Status
                                             </button>
 
                                             <button title="Atualizar Status" type="button"
