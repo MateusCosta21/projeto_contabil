@@ -1,4 +1,3 @@
-@extends('layouts.app')
 @section('modal')
     <!-- Modal -->
     <div class="modal fade" id="atualizarStatusModal" tabindex="-1" role="dialog" aria-labelledby="atualizarStatusModalLabel"
