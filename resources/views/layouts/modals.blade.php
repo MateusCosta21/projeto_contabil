@@ -1,11 +1,11 @@
 @section('modal')
+    @foreach ($retornaCadastro as $objeto)
     <!-- Modal -->
-    <div class="modal fade" id="atualizarStatusModal" tabindex="-1" role="dialog" aria-labelledby="atualizarStatusModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="atualizarStatusModal{{ $objeto->id }}" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="atualizarStatusModalLabel">Atualizar Status</h5>
+                    <h5 class="modal-title" id="atualizarStatusModalLabel">Atualizar Status - {{$objeto->id}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -26,6 +26,6 @@
             </div>
         </div>
     </div>
-
+@endforeach
     
 @endsection

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@extends('layouts.modals')
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <div class="row d-flex justify-content-center">
@@ -430,20 +429,18 @@
                                         </td>
                                         <td class="d-none d-sm-table-cell">
                                             <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
-                                                data-target="#atualizarStatusModal">
-                                                <i class="fas fa-sync-alt"></i> Atualizar Status
+                                                data-target="#atualizarStatusModal{{ $objeto->id }}">
+                                                <i class="fas fa-sync-alt"></i>
                                             </button>
-
-                                            <button title="Atualizar Status" type="button"
+                                            <button title="Historico" type="button"
                                                 class="btn btn-primary btn-sm" data-dismiss="modal"><i
                                                     class="fa fa-search"></i></button>
 
-                                            <button title="Atualizar Status" type="button" class="btn btn-danger btn-sm"
+                                            <button title="Remover" type="button" class="btn btn-danger btn-sm"
                                                 data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
-
-
                                         </td>
                                     </tr>
+                                    @include('layouts.modals', ['objeto' => $objeto])
                                 @endif
                             @endforeach
                         </tbody>
