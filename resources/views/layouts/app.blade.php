@@ -102,6 +102,7 @@
             </header>
             <main class="">
                 @yield('content')
+                @yield('modal')
             </main>
         </div>
     </div>

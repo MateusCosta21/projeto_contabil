@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@extends('layouts.modals')
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <div class="row d-flex justify-content-center">
@@ -171,7 +171,9 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($retornaCadastro as $objeto)
-                                        @if ($objeto->op_envio == 1 && $objeto->status == 'Aguardando')
+                                        @if (
+                                            ($objeto->op_envio == 1 && $objeto->status == 'Aguardando') ||
+                                                ($objeto->op_envio == 3 && $objeto->status == 'Aguardando'))
                                             <tr>
                                                 <td class="text-wrap">{{ $objeto->descricao }}</td>
 
@@ -188,85 +190,7 @@
                                                 </td>
 
                                             </tr>
-                                            <div class="modal fade" id="informacaoObjeto{{ $objeto->id }}"
-                                                tabindex="-1" role="dialog"
-                                                aria-labelledby="informacaoObjeto{{ $objeto->id }}" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"
-                                                                id="informacaoObjeto{{ $objeto->id }}">Informações do
-                                                                objeto #{{ $objeto->id }}</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form>
-                                                                <div class="form-group">
-                                                                    <label for="id">Número</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="id" name="id"
-                                                                        value="{{ $objeto->id }}"readonly>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="id">Objeto</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="objeto" name="objeto"
-                                                                        value="{{ $objeto->descricao }}"readonly>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="id">Tipo</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="objeto" name="objeto"
-                                                                        value="{{ $objeto->tipo->nome }}"readonly>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="destinatario">Destinatário:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="destinatario" name="destinatario"
-                                                                        value="{{ $objeto->cliente->nome }}" readonly>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="id">Cadastrado por:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="id"
-                                                                        value="{{ $objeto->usuario->name }}"name="id"
-                                                                        readonly>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer" id="botoes">
-                                                            <button title="Editar Objeto" type="button"
-                                                                class="btn btn-secondary btn-sm" data-dismiss="modal"><i
-                                                                    class="fa fa-edit"></i> Editar</button>
-                                                            <button title="Imprimir Protocolo" type="button"
-                                                                class="btn btn-info btn-sm"><i class="fa fa-print"
-                                                                    aria-hidden="true"></i> Imprimir Protocolo</button>
-
-                                                                    <form action="{{ route('deletaRota', ['id' => $objeto->id]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
-                                                                        @csrf
-                                                                        @method('delete')
-                                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Cancelar envio</button>
-                                                                    </form>
-                                                        </div>
-                                                        <center>
-                                                            <form method="POST" action="{{ route('enviaRota') }}">
-                                                                @csrf
-                                                                <input type="hidden" name="objeto_id"
-                                                                    value="{{ $objeto->id }}">
-                                                                <button type="submit"
-                                                                    onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
-                                                                    class="btn btn-success btn-sm text-center">
-                                                                    <i class="fa fa-motorcycle"></i> Incluir na Rota
-                                                                </button>
-                                                            </form>
-                                                        </center>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        
                         </div>
                     </div>
                     @endif
@@ -278,7 +202,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="testes">
             <div class="card-header">
                 <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
                         Cliente</small></h4>
@@ -358,8 +282,8 @@
                                                 </div>
                                                 <div class="modal-footer" id="botoes">
                                                     <button title="Editar Objeto" type="button"
-                                                        class="btn btn-secondary btn-sm" data-dismiss="modal"><i
-                                                            class="fa fa-edit"></i> Editar</button>
+                                                        class="btn btn-secondary btn-sm" data-toogle="modal"
+                                                        data-target=""><i class="fa fa-edit"></i> Editar</button>
                                                     <button title="Imprimir Protocolo" type="button"
                                                         class="btn btn-info btn-sm"><i class="fa fa-print"
                                                             aria-hidden="true"></i> Imprimir Protocolo</button>
@@ -392,11 +316,66 @@
     </div>
     </div>
     <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default mt-5">
             <div class="card-header">
                 <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos em rota <small
                         class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
 
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive overflow-auto">
+                    <table class="table table-sm" id="objetos_rota">
+                        <thead>
+                            <tr>
+                                <th class="col-12 col-sm-6">Destinatário</th>
+                                <th class="col-12 col-sm-6">Objeto</th>
+                                <th class="d-none d-sm-table-cell">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="font-tamanho">
+                            @foreach ($retornaCadastro as $objeto)
+                                @if ($objeto->status == 'Em rota')
+                                    <tr>
+                                        <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
+                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
+                                            <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
+                                            <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
+                                            <br>
+                                            <strong>Observação:</strong>{{ $objeto->observacao }}<br>
+                                            <strong>Cadastrado por:</strong>{{ $objeto->usuario->name }}<br>
+                                            <strong>Data
+                                                limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
+                                                data-target="#atualizarStatusModal">
+                                                <i class="fas fa-sync-alt"></i>
+                                            </button>
+
+                                            <button title="Atualizar Status" type="button"
+                                                class="btn btn-primary btn-sm" data-dismiss="modal"><i
+                                                    class="fa fa-search"></i></button>
+
+                                            <button title="Atualizar Status" type="button" class="btn btn-danger btn-sm"
+                                                data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+
+
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Condominio cliente -->
+    <div class="col-md-12">
+        <div class="panel panel-default mt-5">
+            <div class="card-header">
+                <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos no Condomínio/Cliente <small
+                        class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
             </div>
             <div class="panel-body">
                 <div class="table-responsive overflow-auto">
@@ -432,4 +411,49 @@
             </div>
         </div>
     </div>
+    <!-- FIM Condominio cliente -->
+
+    <!-- EM ATRASO -->
+    <div class="col-md-12">
+        <div class="panel panel-default mt-5">
+            <div class="card-header">
+                <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos com entrega em atraso
+                    <small class="text-muted">Até:<?php echo date('d/m/Y'); ?></small>
+                </h4>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive overflow-auto">
+                    <table class="table table-sm" id="objetos_rota">
+                        <thead>
+                            <tr>
+                                <th class="col-12 col-sm-6">Destinatário</th>
+                                <th class="col-12 col-sm-6">Objeto</th>
+                                <th class="d-none d-sm-table-cell">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="font-tamanho">
+                            @foreach ($retornaCadastro as $objeto)
+                                @if ($objeto->status == 'Em rota')
+                                    <tr>
+                                        <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
+                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
+                                            <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
+                                            <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
+                                            <br>
+                                            <strong>Observação:</strong>{{ $objeto->observacao }}<br>
+                                            <strong>Cadastrado por:</strong>{{ $objeto->usuario->name }}<br>
+                                            <strong>Data
+                                                limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
+                                        </td>
+                                        <td class="d-none d-sm-table-cell"> acao </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIM Condominio cliente -->
 @endsection
