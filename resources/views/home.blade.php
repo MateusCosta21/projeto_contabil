@@ -301,13 +301,24 @@
                     <table class="table table-sm" id="objetos_rota">
                         <thead>
                             <tr>
-                                <th class="col-12 col-sm-6">Destinatário</th>
                                 <th class="col-12 col-sm-6">Objeto</th>
-                                <th class="d-none d-sm-table-cell">Ação</th>
+                                <th class="col-12 col-sm-6">Destinatário</th>
+                                <th class="d-none d-sm-table-cell">Tipo de objeto</th>
+                                <th class="d-none d-sm-table-cell">Status atual</th>
+                                <th class="d-none d-sm-table-cell">Ações</th>
+
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
-           
+                            @if(date('d/m/Y', strtotime($objeto->data_limite)) < date('d/m/Y'))
+                            <tr>
+                                <td> {{$objeto->descricao }}</td>
+                                <td> {{$objeto->cliente->nome }}</td>
+                                <td> {{$objeto->tipo->nome }}</td>
+                                <td> {{$objeto->status }}</td>
+                                <td> Ação </td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
