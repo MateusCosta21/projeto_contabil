@@ -34,12 +34,11 @@ class HomeController extends Controller
         $retornaCadastro = Objetos::get();
         $objetosAguardando = DB::table('objetos')->where('status', '=', 'Aguardando')->count();
         $objetosEmRota = DB::table('objetos')->where('status', '=', 'Em rota')->count();
-        return view('home', compact('tiposObjetos', 'clientes', 'objetosAguardando', 'retornaCadastro', 'objetosEmRota'));
+        $objetosCondominio = DB::table('objetos')->where('status', '=', 'No Condomínio/Cliente')->count();
+        $objetosEmAtraso = DB::table('objetos')->where('data_limite', '<', date('Y-m-d'))->count();
 
-       /* public function index(){
-            $clientes = Cliente::get();
-            return view('clientes.clientes',['clientes' => $clientes]);
-        }*/
+        return view('home', compact('tiposObjetos', 'clientes', 'objetosAguardando', 'retornaCadastro', 'objetosEmRota','objetosCondominio','objetosEmAtraso'));
+
     }
 
     public function countObjetosAguardando()

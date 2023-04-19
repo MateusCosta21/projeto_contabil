@@ -34,7 +34,7 @@
                     </div>
                     <a href='#em-processamento'>
                         <div class="card-footer text-center">
-                            <span style="color:#fff;">Ver detalhes</span>
+                            <a href="#rota"><span style="color:#fff;">Ver detalhes</span></a>
                             <i style="color:#fff;" class="fas fa-arrow-circle-right"></i>
                         </div>
                     </a>
@@ -47,13 +47,13 @@
                             <i class="fa fa-building fa-3x text-white"></i>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <div class="huge text-white">30</div>
+                            <div class="huge text-white">{{$objetosCondominio}}</div>
                         </div>
                         <div class="text-center text-white">No Condomínio/Cliente</div>
                     </div>
                     <a href='#em-processamento'>
                         <div class="card-footer text-center">
-                            <span style="color:#fff;">Ver detalhes</span>
+                           <a href="#condominio"><span style="color:#fff;">Ver detalhes</span></a>
                             <i style="color:#fff;" class="fas fa-arrow-circle-right"></i>
                         </div>
                     </a>
@@ -66,13 +66,13 @@
                             <i class="fa fa-hourglass fa-3x text-white"></i>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <div class="huge text-white">30</div>
+                            <div class="huge text-white">{{$objetosEmAtraso}}</div>
                         </div>
                         <div class="text-center text-white">Fora do prazo</div>
                     </div>
                     <a href='#em-processamento'>
                         <div class="card-footer text-center">
-                            <span style="color:#fff;">Ver detalhes</span>
+                           <a href="#objetos_atraso"><span style="color:#fff;">Ver detalhes</span></a>
                             <i style="color:#fff;" class="fas fa-arrow-circle-right"></i>
                         </div>
                     </a>
@@ -83,6 +83,7 @@
         <button type="button" class="btn btn-info btn-lg mt-5 ml-3" data-toggle="modal" data-target="#cadastroModal">
             <i class="fas fa-plus"></i> Cadastrar objeto
         </button>
+        @include('layouts.modals');
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
@@ -178,7 +179,7 @@
     </div>
     </div>
     <div class="col-md-12">
-        <div class="panel panel-default mt-5">
+        <div class="panel panel-default mt-5" id="rota">
             <div class="card-header">
                 <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos em rota <small
                         class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
@@ -233,14 +234,14 @@
     </div>
     <!-- Condominio cliente -->
     <div class="col-md-12">
-        <div class="panel panel-default mt-5">
+        <div class="panel panel-default mt-5" id="condominio">
             <div class="card-header">
                 <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos no Condomínio/Cliente <small
                         class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
             </div>
             <div class="panel-body">
                 <div class="table-responsive overflow-auto">
-                    <table class="table table-sm" id="objetos_rota">
+                    <table class="table table-sm" id="objetos_condominio">
                         <thead>
                             <tr>
                                 <th class="col-12 col-sm-6">Objeto</th>
@@ -290,7 +291,7 @@
 
     <!-- EM ATRASO -->
     <div class="col-md-12">
-        <div class="panel panel-default mt-5">
+        <div class="panel panel-default mt-5" id="foraprazo">
             <div class="card-header">
                 <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos com entrega em atraso
                     <small class="text-muted">Até:<?php echo date('d/m/Y'); ?></small>
@@ -298,7 +299,7 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive overflow-auto">
-                    <table class="table table-sm" id="objetos_rota">
+                    <table class="table table-sm" id="objetos_atraso">
                         <thead>
                             <tr>
                                 <th class="col-12 col-sm-6">Objeto</th>
@@ -310,6 +311,7 @@
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
+                            @isset($objeto)
                             @if(date('d/m/Y', strtotime($objeto->data_limite)) < date('d/m/Y'))
                             <tr>
                                 <td> {{$objeto->descricao }}</td>
@@ -321,6 +323,7 @@
                                 </button>
                             </tr>
                         @endif
+                        @endisset
                         </tbody>
                     </table>
                 </div>

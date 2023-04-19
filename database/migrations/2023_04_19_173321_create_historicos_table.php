@@ -17,7 +17,7 @@ class CreateHistoricosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('objeto_id'); 
             $table->unsignedBigInteger('usuario_id'); 
-            $table->foreign('objeto_id')->references('id')->on('objetos'); 
+            $table->foreign('objeto_id')->references('id')->on('objetos')->onDelete('cascade'); 
             $table->foreign('usuario_id')->references('id')->on('users'); 
             $table->string('status', 45)->nullable(false);
             $table->timestamps();
