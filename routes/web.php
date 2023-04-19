@@ -67,6 +67,7 @@ Route::post('/objeto/add', [App\Http\Controllers\ObjetoController::class, 'add']
 Route::post('/objeto/enviaRota', [App\Http\Controllers\ObjetoController::class, 'enviaRota'])->name('enviaRota')->middleware('auth');
 Route::delete('/objeto/delete/{id}', [App\Http\Controllers\ObjetoController::class, 'delete'])->name('deletaRota')->middleware('auth');
 Route::post('/objeto/finaliza_processo', [App\Http\Controllers\ObjetoController::class, 'finaliza_processo'])->name('finaliza_processo')->middleware('auth');
+Route::post('/objeto/retorna_processo', [App\Http\Controllers\ObjetoController::class, 'retorna_processo'])->name('retorna_processo')->middleware('auth');
 
 
 Route::get('/novo_modal', [App\Http\Controllers\ModalsController::class, 'index'])->name('novo_modal')->middleware('auth');;

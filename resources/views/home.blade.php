@@ -196,7 +196,7 @@
                         </thead>
                         <tbody id="font-tamanho">
                             @foreach ($retornaCadastro as $objeto)
-                                @if ($objeto->status == 'Em rota')
+                                @if ($objeto->status == 'Em Rota')
                                     <tr>
                                         <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
                                         <td class="col-12 col-sm-6" style="word-wrap: break-word;">
@@ -261,9 +261,7 @@
                                     </td>
                                     <td>{{$objeto->tipo->nome}}</td>
                                     <td>
-                                        <button type="submit"
-                                        onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
-                                        class="btn btn-light btn-sm text-center">
+                                        <button type="button" class="btn btn-light btn-sm text-center"  data-toggle="modal" data-target="#incluirRota{{ $objeto->id }}">
                                         <i class="fa fa-motorcycle"></i>
                                     </button>
                                     <button title="Historico" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
@@ -309,23 +307,7 @@
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
-                            @foreach ($retornaCadastro as $objeto)
-                                @if ($objeto->status == 'Em rota')
-                                    <tr>
-                                        <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
-                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
-                                            <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
-                                            <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
-                                            <br>
-                                            <strong>Observação:</strong>{{ $objeto->observacao }}<br>
-                                            <strong>Cadastrado por:</strong>{{ $objeto->usuario->name }}<br>
-                                            <strong>Data
-                                                limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
-                                        </td>
-                                        <td class="d-none d-sm-table-cell"> acao </td>
-                                    </tr>
-                                @endif
-                            @endforeach
+           
                         </tbody>
                     </table>
                 </div>

@@ -12,7 +12,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="statusSelect">Status:</label>
                             <form method="POST" action="{{ route('finaliza_processo') }}">
                                 @csrf
                                 <input type="hidden" name="objeto_id" value="{{ $objeto->id }}">
@@ -27,6 +26,54 @@
                                                 <option value="2">Entregue</option>
                                             @endif
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+    @foreach ($retornaCadastro as $objeto)
+        <!-- Modal -->
+        <div class="modal fade" id="incluirRota{{ $objeto->id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="atualizarStatusModalLabel">Incluir Status - {{ $objeto->id }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <form method="POST" action="{{ route('retorna_processo') }}">
+                                @csrf
+                                <input type="hidden" name="objeto_id" value="{{ $objeto->id }}">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        @if($objeto->op_envio == 3 && $objeto->tipo->nome == "Notificações")
+                                            <label for="data_envio">Data envio</label>
+                                            <input type="date" class="form-control" name="data_envio" id="data_envio"
+                                                min="{{ date('Y-m-d', strtotime('-1 day')) }}"><br>
+                                            <label for="statusSelect">Status:</label>
+                                            <select class="form-control" id="statusSelect" name="statusSelect">
+                                                <option value="1">Colocar em Rota</option>
+                                            </select>
+                                        @else
+                                        <label for="statusSelect">Status:</label>
+                                            <select class="form-control" id="statusSelect" name="statusSelect">
+                                                <option value="1">Colocar em Rota</option>
+                                            </select>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="modal-footer">
