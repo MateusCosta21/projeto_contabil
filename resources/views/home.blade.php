@@ -215,13 +215,11 @@
                                             <button title="Historico" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
                                                 <i class="fa fa-search"></i>
                                             </button>
-                                            <form action="{{ route('deletaRota', ['id' => $objeto->id]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
-                                                @csrf
-                                                @method('delete')
-                                                <button title="Remover" type="submit" class="btn btn-danger btn-sm" data-dismiss="modal">
-                                                    <i class="fa fa-times-circle"></i>
-                                                </button>
-                                            </form>
+                                            <a href="{{ route('deletaRota', ['id' => $objeto->id]) }}" 
+                                                onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este item?')) deleteItem('{{ route('deletaRota', ['id' => $objeto->id]) }}');" 
+                                                title="Remover" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-times-circle"></i>
+                                             </a>
                                         </td>
                                     </tr>
                                     @include('layouts.modals', ['objeto' => $objeto])
@@ -258,7 +256,19 @@
                                     <td>{{$objeto->descricao}}</td>
                                     <td>{{$objeto->cliente->nome }}</td>
                                     <td>{{$objeto->tipo->nome}}</td>
-                                    <td>Ação</td>
+                                    <td>
+                                        <form method="POST" action="{{ route('enviaRota') }}">
+                                            @csrf
+                                            <input type="hidden" name="objeto_id" value="{{ $objeto->id }}">
+                                            <button type="submit"
+                                                onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
+                                                class="btn btn-light btn-sm text-center">
+                                                <i class="fa fa-motorcycle"></i>
+                                            </button>
+                                        </form>
+
+
+                                    </td>
                                 </tr>
                                 @endif
                                 @endforeach
