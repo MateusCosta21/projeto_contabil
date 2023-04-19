@@ -264,7 +264,7 @@
                                         <button type="button" class="btn btn-light btn-sm text-center"  data-toggle="modal" data-target="#incluirRota{{ $objeto->id }}">
                                         <i class="fa fa-motorcycle"></i>
                                     </button>
-                                    <button title="Historico" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                    <button title="Historico" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#historico{{ $objeto->id }}">
                                         <i class="fa fa-search"></i>
                                     </button>
                                     <a href="{{ route('deletaRota', ['id' => $objeto->id]) }}" 
@@ -316,7 +316,9 @@
                                 <td> {{$objeto->cliente->nome }}</td>
                                 <td> {{$objeto->tipo->nome }}</td>
                                 <td> {{$objeto->status }}</td>
-                                <td> Ação </td>
+                                <button title="Historico" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#historico{{ $objeto->id }}">
+                                    <i class="fa fa-search"></i>
+                                </button>
                             </tr>
                         @endif
                         </tbody>

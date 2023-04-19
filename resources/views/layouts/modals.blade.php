@@ -1,3 +1,6 @@
+@php
+use App\Models\Historico;
+@endphp
 @section('modal')
     @foreach ($retornaCadastro as $objeto)
         <!-- Modal -->
@@ -64,12 +67,18 @@
                         <br>
                         <strong> Cadastrado por: </strong>{{ $objeto->usuario->name }}
                         <hr>
-                        @foreach ($historicos as $historico)
-                                <strong> Status: </strong> {{ $historico->status }}
-                                <br>
-                                <strong> Cadastrado por: </strong>{{ $historico->id }}
-                                <hr>
-                        @endforeach
+
+                        @foreach(DB::table('historicos')
+                        ->join('users', 'historicos.usuario_id', '=', 'users.id')
+                        ->select('historicos.*', 'users.name as user_name')
+                        ->where('objeto_id', $objeto->id)
+                        ->get() as $historico)
+                        <strong> Data </strong>{{ date('d/m/Y', strtotime($historico->created_at))}}<br>
+                        <strong> Status </strong>{{ $historico->status }}<br>
+                        <strong> Cadastrado por: </strong>{{ $historico->user_name }}
+                        <hr>
+                    @endforeach
+
                     </div>
 
                 </div>
