@@ -245,29 +245,23 @@
                     <table class="table table-sm" id="objetos_rota">
                         <thead>
                             <tr>
-                                <th class="col-12 col-sm-6">Destinatário</th>
                                 <th class="col-12 col-sm-6">Objeto</th>
-                                <th class="d-none d-sm-table-cell">Ação</th>
+                                <th class="col-12 col-sm-6">Destinatário</th>
+                                <th class="d-none d-sm-table-cell">Tipo de objeto</th>
+                                <th class="d-none d-sm-table-cell">Ações</th>
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
                             @foreach ($retornaCadastro as $objeto)
-                                @if ($objeto->status == 'Em rota')
-                                    <tr>
-                                        <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
-                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
-                                            <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
-                                            <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
-                                            <br>
-                                            <strong>Observação:</strong>{{ $objeto->observacao }}<br>
-                                            <strong>Cadastrado por:</strong>{{ $objeto->usuario->name }}<br>
-                                            <strong>Data
-                                                limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
-                                        </td>
-                                        <td class="d-none d-sm-table-cell"> acao </td>
-                                    </tr>
+                                @if ($objeto->status == 'No condominio/Cliente' && $objeto->op_envio == 3)
+                                <tr>
+                                    <td>{{$objeto->descricao}}</td>
+                                    <td>{{$objeto->cliente->nome }}</td>
+                                    <td>{{$objeto->tipo->nome}}</td>
+                                    <td>Ação</td>
+                                </tr>
                                 @endif
-                            @endforeach
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
