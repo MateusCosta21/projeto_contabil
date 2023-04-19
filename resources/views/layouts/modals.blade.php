@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label for="statusSelect">Status:</label>
                                         <select class="form-control" id="statusSelect" name="statusSelect">
-                                            @if($objeto->op_envio == 3 && $objeto->status == "Em rota")
+                                            @if ($objeto->op_envio == 3 && $objeto->status == 'Em Rota')
                                                 <option value="1">No condominio/Cliente</option>
                                                 <option value="2">Entregue</option>
                                             @else
@@ -42,32 +42,40 @@
     @endforeach
 
     @foreach ($retornaCadastro as $objeto)
-    <!-- Modal -->
-    <div class="modal fade" id="historico{{ $objeto->id }}" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="atualizarStatusModalLabel">Histórico do objeto id n° {{ $objeto->id }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span> Cadastrado em: </span>
-                    <br>
-                    <span> Data de Envio:: </span>
-                    <br>
-                    <span> Prazo limite de Entrega: </span>
-                    <br>
-                    <span> Observações: </span>
-                    <br>
-                    <span> Cadastrado por: </span>
-                </div>
+        <!-- Modal -->
+        <div class="modal fade" id="historico{{ $objeto->id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="atualizarStatusModalLabel">Histórico do objeto id n° {{ $objeto->id }}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <strong> Cadastrado em: </strong> {{ date('d/m/Y', strtotime($objeto->created_at)) }}
+                        <br>
+                        <strong> Data de Envio: </strong>{{ date('d/m/Y', strtotime($objeto->data_envio)) }}
+                        <br>
+                        <strong> Prazo limite de Entrega: </strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
+                        <br>
+                        <strong> Observações: </strong>{{ $objeto->observacao }}
+                        <br>
+                        <strong> Cadastrado por: </strong>{{ $objeto->usuario->name }}
+                        <hr>
+                        @foreach ($historicos as $historico)
+                                <strong> Status: </strong> {{ $historico->status }}
+                                <br>
+                                <strong> Cadastrado por: </strong>{{ $historico->id }}
+                                <hr>
+                        @endforeach
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
-@endforeach
+    @endforeach
 
 
     @foreach ($retornaCadastro as $objeto)
@@ -88,7 +96,7 @@
                                 <input type="hidden" name="objeto_id" value="{{ $objeto->id }}">
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        @if($objeto->op_envio == 3 && $objeto->tipo->nome == "Notificações")
+                                        @if ($objeto->op_envio == 3 && $objeto->tipo->nome == 'Notificações')
                                             <label for="data_envio">Data envio</label>
                                             <input type="date" class="form-control" name="data_envio" id="data_envio"
                                                 min="{{ date('Y-m-d', strtotime('-1 day')) }}"><br>
@@ -97,7 +105,7 @@
                                                 <option value="1">Colocar em Rota</option>
                                             </select>
                                         @else
-                                        <label for="statusSelect">Status:</label>
+                                            <label for="statusSelect">Status:</label>
                                             <select class="form-control" id="statusSelect" name="statusSelect">
                                                 <option value="1">Colocar em Rota</option>
                                             </select>
@@ -165,8 +173,8 @@
                     <div class="modal-footer" id="botoes">
                         <button title="Editar Objeto" type="button" class="btn btn-secondary btn-sm"
                             data-dismiss="modal"><i class="fa fa-edit"></i> Editar</button>
-                        <button title="Imprimir Protocolo" type="button" class="btn btn-info btn-sm"><i class="fa fa-print"
-                                aria-hidden="true"></i> Imprimir Protocolo</button>
+                        <button title="Imprimir Protocolo" type="button" class="btn btn-info btn-sm"><i
+                                class="fa fa-print" aria-hidden="true"></i> Imprimir Protocolo</button>
 
                         <form action="{{ route('deletaRota', ['id' => $objeto->id]) }}" method="post"
                             onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
