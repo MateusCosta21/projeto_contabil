@@ -41,6 +41,34 @@
         </div>
     @endforeach
 
+    @foreach ($retornaCadastro as $objeto)
+    <!-- Modal -->
+    <div class="modal fade" id="historico{{ $objeto->id }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="atualizarStatusModalLabel">Histórico do objeto id n° {{ $objeto->id }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span> Cadastrado em: </span>
+                    <br>
+                    <span> Data de Envio:: </span>
+                    <br>
+                    <span> Prazo limite de Entrega: </span>
+                    <br>
+                    <span> Observações: </span>
+                    <br>
+                    <span> Cadastrado por: </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+@endforeach
+
 
     @foreach ($retornaCadastro as $objeto)
         <!-- Modal -->

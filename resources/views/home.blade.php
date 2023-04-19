@@ -212,7 +212,7 @@
                                             <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#atualizarStatusModal{{ $objeto->id }}">
                                                 <i class="fas fa-sync-alt"></i>
                                             </button>
-                                            <button title="Historico" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                            <button title="Historico" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#historico{{ $objeto->id }}">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                             <a href="{{ route('deletaRota', ['id' => $objeto->id]) }}" 
