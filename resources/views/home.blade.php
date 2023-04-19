@@ -254,17 +254,27 @@
                                 @if ($objeto->status == 'No condominio/Cliente' && $objeto->op_envio == 3)
                                 <tr>
                                     <td>{{$objeto->descricao}}</td>
-                                    <td>{{$objeto->cliente->nome }}</td>
+                                    <td>{{$objeto->cliente->nome }}
+                                        <h6><span class="badge badge-secondary">Este objeto deve retornar para a Administradora até {{ \Carbon\Carbon::parse($objeto->data_limite)->format('d/m/Y') }}
+                                        </span></h6>
+
+                                    </td>
                                     <td>{{$objeto->tipo->nome}}</td>
                                     <td>
-                                        <form method="POST" action="{{ route('enviaRota') }}">
-                                            @csrf
-                                            <input type="hidden" name="objeto_id" value="{{ $objeto->id }}">
-                                            <button type="submit"
-                                                onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
-                                                class="btn btn-light btn-sm text-center">
-                                                <i class="fa fa-motorcycle"></i>
-                                            </button>
+                                        <button type="submit"
+                                        onclick="return confirm('Tem certeza que deseja colocar este objeto em rota?')"
+                                        class="btn btn-light btn-sm text-center">
+                                        <i class="fa fa-motorcycle"></i>
+                                    </button>
+                                    <button title="Historico" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <a href="{{ route('deletaRota', ['id' => $objeto->id]) }}" 
+                                        onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este item?')) deleteItem('{{ route('deletaRota', ['id' => $objeto->id]) }}');" 
+                                        title="Remover" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-times-circle"></i>
+                                     </a>
+
                                         </form>
 
 
