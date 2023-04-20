@@ -67,6 +67,68 @@
             </div>
         </div>
     </div>
+
+    @foreach ($retornaCadastro as $objeto)
+    <div class="modal fade" id="editarObjetos{{ $objeto->id }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar objeto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route('adiciona_objeto') }}">
+                        @csrf
+                        <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="status" value="Aguardando">
+                        <div class="form-group">
+                            <label for="tipo_id">Tipo de objeto</label>
+                            <input type="text" class="form-control" name="descricao" id="descricao" value="{{$objeto->tipo->nome}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="remetente">Remetente/Destinatário:</label>
+                            <input type="text" class="form-control" name="descricao" id="descricao" value="{{$objeto->cliente->nome}}" readonly>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição do objeto</label>
+                            <input type="text" class="form-control" name="descricao" id="descricao" value="{{$objeto->descricao}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="observacao">Observações sobre o Objeto</label>
+                            <input type="text" class="form-control" name="observacao" id="observacao" value="{{$objeto->observacao}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="data_envio">Data envio</label>
+                            <input type="date" class="form-control" name="data_envio" id="data_envio"
+                                min="{{ date('Y-m-d', strtotime('-1 day')) }}" value="{{date('Y-m-d', strtotime($objeto->data_envio))}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="data_limite">Data Limite para entrega</label>
+                            <input type="date" class="form-control" name="data_limite" id="data_limite"
+                            min="{{ date('Y-m-d', strtotime('-1 day')) }}" value="{{date('Y-m-d', strtotime($objeto->data_limite))}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="op_envio">Selecione o Tipo de Endereçamento da Correspondência</label>
+                            <select class="form-control" id="op_envio" name="op_envio">
+                                <option value="1" {{ $objeto->op_envio == 1 ? 'selected' : '' }}>Da Pontual para o Cliente</option>
+                                <option value="2" {{ $objeto->op_envio == 2 ? 'selected' : '' }}>Do Cliente para a Pontual</option>
+                                <option value="3" {{ $objeto->op_envio == 3 ? 'selected' : '' }}>Da Pontual para o Cliente e retorna para a Pontual</option>
+                            </select>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
     {{-- FIM MODAL CADASTRO --}}
     @foreach ($retornaCadastro as $objeto)
         <!-- Modal -->
@@ -74,7 +136,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="atualizarStatusModalLabel">Atualizar Status - {{ $objeto->id }}</h5>
+                        <h5 class="modal-title" id="atualizarStatusModalLabel">Atualizar Status - {{ $objeto->id }}
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -244,7 +307,8 @@
                     </div>
                     <div class="modal-footer" id="botoes">
                         <button title="Editar Objeto" type="button" class="btn btn-secondary btn-sm"
-                            data-dismiss="modal"><i class="fa fa-edit"></i> Editar</button>
+                            data-dismiss="modal" data-toggle="modal" data-target="#editarObjetos{{ $objeto->id }}"><i
+                                class="fa fa-edit"></i> Editar</button>
                         <button title="Imprimir Protocolo" type="button" class="btn btn-info btn-sm"><i
                                 class="fa fa-print" aria-hidden="true"></i> Imprimir Protocolo</button>
 
