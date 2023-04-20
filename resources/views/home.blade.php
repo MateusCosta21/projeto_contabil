@@ -323,6 +323,7 @@
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
+                            @foreach ($retornaCadastro as $objeto)
                             @isset($objeto)
                                 @if (date('d/m/Y', strtotime($objeto->data_limite)) < date('d/m/Y'))
                                     <tr>
@@ -330,13 +331,16 @@
                                         <td> {{ $objeto->cliente->nome }}</td>
                                         <td> {{ $objeto->tipo->nome }}</td>
                                         <td> {{ $objeto->status }}</td>
+                                        <td>
                                         <button title="Historico" type="button" class="btn btn-primary btn-sm"
                                             data-toggle="modal" data-target="#historico{{ $objeto->id }}">
                                             <i class="fa fa-search"></i>
                                         </button>
+                                    </td>
                                     </tr>
                                 @endif
                             @endisset
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

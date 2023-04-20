@@ -30,7 +30,7 @@ class ClientesController extends Controller
         try {
             $cliente = Cliente::findOrFail($id);
             $cliente->update($request->all());
-            return redirect('clientes.cliente')->with('success', 'Cliente atualizado com sucesso');
+            return redirect('clientes')->with('success', 'Cliente atualizado com sucesso');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors(['Cliente não pode ser atualizado']);
         }  
@@ -39,7 +39,7 @@ class ClientesController extends Controller
     public function delete($id){
         $cliente = Cliente::findOrFail($id);
         $cliente->delete();
-        return redirect('clientes.cliente')->with('success', 'Registro Deletado');
+        return back()->with('success', 'Registro Deletado');
     }
 
 }
