@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
     <div class="container-fluid pt-4 px-4">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-6 col-xl-3">

@@ -18,7 +18,6 @@ class ObjetoController extends Controller
             $objeto = $objeto->create($request->all());
             return redirect()->route('home')->with('success', 'Cadastro realizado com sucesso!');
         } catch (\Exception $e) {
-            dd($e);
             return redirect()->back()->withInput()->withErrors(['Cadastro não pode ser realizado']);
         }
     }
@@ -38,7 +37,7 @@ class ObjetoController extends Controller
         $historico->status = $status;
         $historico->save();
     
-        return redirect()->back()->with('success', 'Objeto atualizado com sucesso.'); 
+        return redirect()->back()->with('success', 'Objeto colocado em rota.'); 
     }
     public function finaliza_processo()
     {
@@ -87,6 +86,16 @@ class ObjetoController extends Controller
     
         // redireciona o usuário para alguma página de sucesso
         return redirect()->back()->with('success', 'Objeto atualizado com sucesso.'); // Redireciona de volta para a página anterior com uma mensagem de sucesso
+    }
+
+    public function update(Request $request, $id){
+        try {
+            $objeto = Objetos::findOrFail($id);
+            $objeto->update($request->all());
+            return redirect()->route('home')->with('success', 'Cadastro atualizado com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['Objeto não pode ser atualizado']);
+        }  
     }
 
     

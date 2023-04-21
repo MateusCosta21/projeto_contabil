@@ -79,7 +79,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{ route('adiciona_objeto') }}">
+                    <form action="{{ route('edita_objeto', ['id' => $objeto->id]) }}" method="post"> 
                         @csrf
                         <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
                         <input type="hidden" name="status" value="Aguardando">
