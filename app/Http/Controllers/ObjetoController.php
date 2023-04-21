@@ -10,6 +10,10 @@ Use App\Models\historico;
 class ObjetoController extends Controller
 {
 
+    public function index(){
+        return view('consulta-objetos.consulta_objetos');
+    }
+
     public function add(Request $request)
     {
         try {

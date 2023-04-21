@@ -49,6 +49,8 @@
                                     objeto</a>
                                 <a href="{{ route('prestadores') }}" class="dashboard-nav-dropdown-item">Prestadores</a>
                             </div>
+                            <a href="{{ route('consulta_objetos') }}" class="dashboard-nav-item"><i class="fas fa-folder-open"></i>
+                               Consulta objetos </a>
                             <div class='dashboard-nav-dropdown'>
                                 <!--<a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="fas fa-photo-video"></i> Media </a>
@@ -57,6 +59,7 @@
                             <a href="#" class="dashboard-nav-dropdown-item">All</a>
                             <a href="#" class="dashboard-nav-dropdown-item">All</a>
                         </div>-->
+                        
                                 <div class='dashboard-nav-dropdown'>
                                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                                         <i class="fas fa-photo-video"></i> Media </a>
