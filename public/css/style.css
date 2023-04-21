@@ -654,3 +654,11 @@ table {
 .text-laranja{
    color: #fff;	
 }
+
+#icon{
+    background-color: #4169E1	;
+}
+#op_clientes{
+    width: 400px !important;
+
+}

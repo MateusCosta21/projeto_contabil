@@ -5,14 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Objetos;
 Use App\Models\historico;
+Use App\Models\Cliente;
+Use App\Models\TipoObjeto;
 
 
 class ObjetoController extends Controller
 {
 
     public function index(){
-        return view('consulta-objetos.consulta_objetos');
+        $clientes = Cliente::get();
+        $objetos = Objetos::Get();
+        $tiposObjetos = TipoObjeto::get();
+        return view('consulta-objetos.consulta_objetos', compact('clientes','tiposObjetos'));
+
+
     }
+    
 
     public function add(Request $request)
     {
