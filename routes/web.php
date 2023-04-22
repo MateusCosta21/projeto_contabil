@@ -75,6 +75,7 @@ Route::get('/novo_modal', [App\Http\Controllers\ModalsController::class, 'index'
 //FIM OBJETOS
 Route::get('/juridico/assuntos', [App\Http\Controllers\JuridicoController::class, 'index'])->name('assuntos_juridicos')->middleware('auth');
 Route::get('/juridico/assuntos/novo', [App\Http\Controllers\JuridicoController::class, 'new'])->name('novo_assunto')->middleware('auth');
+Route::post('/juridico/assunto/add', [App\Http\Controllers\JuridicoController::class, 'add'])->name('adiciona_assunto')->middleware('auth');
 
 
 
