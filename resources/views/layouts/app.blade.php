@@ -62,11 +62,10 @@
                         
                                 <div class='dashboard-nav-dropdown'>
                                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                        <i class="fas fa-photo-video"></i> Media </a>
+                                        <i class="fas fa-balance-scale"></i> Júridico </a>
                                     <div class='dashboard-nav-dropdown-menu'>
-                                        <a href="#" class="dashboard-nav-dropdown-item">All</a>
-                                        <a href="#" class="dashboard-nav-dropdown-item">All</a>
-                                        <a href="#" class="dashboard-nav-dropdown-item">All</a>
+                                        <a href="{{route('assuntos_juridicos')}}" class="dashboard-nav-dropdown-item">Assuntos</a>
+                                        <a href="#" class="dashboard-nav-dropdown-item">Notificações</a>
                                     </div>
                                     <a href="#" class="dashboard-nav-item">
                                         <i class="fas fa-cogs"></i> Settings </a>

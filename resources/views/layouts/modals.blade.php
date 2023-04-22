@@ -18,17 +18,22 @@
                         <div class="form-group">
                             <label for="tipo_id">Tipo de objeto</label>
                             <select class="form-control" id="tipo_id" name="tipo_id">
+                                @isset($tiposObjetos)
                                 @foreach ($tiposObjetos as $tipoObjeto)
                                     <option value="{{ $tipoObjeto->id }}">{{ $tipoObjeto->nome }}</option>
                                 @endforeach
+                                @endisset
+
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="remetente">Remetente/Destinatário:</label>
                             <select class="form-control" id="cliente_id" name="cliente_id">
+                                @isset($clientes)
                                 @foreach ($clientes as $cliente)
                                     <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
                                 @endforeach
+                                @endisset
                             </select>
                         </div>
                         <div class="form-group">
@@ -67,7 +72,7 @@
             </div>
         </div>
     </div>
-
+    @isset($retornaCadastro)
     @foreach ($retornaCadastro as $objeto)
     <div class="modal fade" id="editarObjetos{{ $objeto->id }}" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -172,7 +177,6 @@
             </div>
         </div>
     @endforeach
-
     @foreach ($retornaCadastro as $objeto)
         <!-- Modal -->
         <div class="modal fade" id="historico{{ $objeto->id }}" tabindex="-1" role="dialog">
@@ -211,6 +215,7 @@
             </div>
         </div>
     @endforeach
+    
 
 
     @foreach ($retornaCadastro as $objeto)
@@ -402,4 +407,6 @@
         </div>
         {{-- FIM MODAL Objetos aguardando envio No Cliente  --}}
     @endforeach
+    @endisset
+
 @endsection
