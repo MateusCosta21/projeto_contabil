@@ -78,6 +78,7 @@ Route::get('/juridico/assuntos/novo', [App\Http\Controllers\JuridicoController::
 Route::post('/juridico/assunto/add', [App\Http\Controllers\JuridicoController::class, 'add'])->name('adiciona_assunto')->middleware('auth');
 Route::get('/juridico/assunto/{id}/edit', [App\Http\Controllers\JuridicoController::class, 'edit'])->name('edita_assunto')->middleware('auth');;
 Route::post('/juridico/assunto/{id}/update/', [App\Http\Controllers\JuridicoController::class, 'update'])->name('update_assuntos')->middleware('auth');;
+Route::delete('/juridico/assunto/{id}/delete', [App\Http\Controllers\JuridicoController::class, 'delete'])->name('delete_assunto')->middleware('auth');
 
 
 

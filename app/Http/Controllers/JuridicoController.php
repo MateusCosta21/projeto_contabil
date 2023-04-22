@@ -40,4 +40,11 @@ class JuridicoController extends Controller
             return redirect()->back()->withInput()->withErrors(['Assunto não pode ser atualizado']);
         }  
     }
+
+    public function delete($id)
+    {
+        $assunto = assunto::findOrFail($id);
+        $assunto->delete();
+        return redirect()->back()->with('success', 'Objeto excluído com sucesso.');
+    }
 }

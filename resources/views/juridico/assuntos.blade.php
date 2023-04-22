@@ -35,11 +35,11 @@
                                     <a href="{{ route('edita_assunto', ['id' => $assunto->id]) }}"
                                         class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('deletaRota', ['id' => $assunto->id]) }}"
-                                        onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este assunto?)) deleteItem('{{ route('deletaRota', ['id' => $assunto->id]) }}');"
+                                    <a href="{{ route('delete_assunto', ['id' => $assunto->id]) }}"
+                                        onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este item?')) deleteItem('{{ route('delete_assunto', ['id' => $assunto->id]) }}');"
                                         title="Remover" class="btn btn-danger btn-sm">
                                         <i class="fa fa-times-circle"></i>
-                                    </a> 
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

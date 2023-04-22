@@ -230,7 +230,7 @@
                                                 <i class="fa fa-search"></i>
                                             </button>
                                             <a href="{{ route('deletaRota', ['id' => $objeto->id]) }}"
-                                                onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este item?')) deleteItem('{{ route('deletaRota', ['id' => $objeto->id]) }}');"
+                                                onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este item?')) deleteItem('{{ route('delete', ['id' => $objeto->id]) }}');"
                                                 title="Remover" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-times-circle"></i>
                                             </a>
