@@ -31,7 +31,16 @@
                                 <td>{{$assunto->usuario->name}}</td>
                                 <td>{{date("d/m/Y", strtotime($assunto->created_at)) }}</td>
                                 <td>{{date("d/m/Y", strtotime($assunto->updated_at)) }}</td>
-                                <td> Ação </td>
+                                <td> 
+                                    <a href="{{ route('edita_assunto', ['id' => $assunto->id]) }}"
+                                        class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{ route('deletaRota', ['id' => $assunto->id]) }}"
+                                        onclick="event.preventDefault(); if(confirm('Tem certeza que deseja excluir este assunto?)) deleteItem('{{ route('deletaRota', ['id' => $assunto->id]) }}');"
+                                        title="Remover" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-times-circle"></i>
+                                    </a> 
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

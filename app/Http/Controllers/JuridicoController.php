@@ -25,4 +25,19 @@ class JuridicoController extends Controller
             return redirect()->back()->withInput()->withErrors(['Cadastro não pode ser realizado']);
         }
     }
+
+    public function edit($id){
+        $assunto = assunto::findOrFail($id);
+        return view('juridico.cadastra_assuntos', ['assunto' => $assunto]);
+    }
+
+    public function update(Request $request, $id){
+        try {
+            $assunto = assunto::findOrFail($id);
+            $assunto->update($request->all());
+            return redirect()->route('assuntos_juridicos')->with('success', 'Assunto atualizado');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['Assunto não pode ser atualizado']);
+        }  
+    }
 }
