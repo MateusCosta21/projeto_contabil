@@ -9,7 +9,8 @@ Use App\Models\assunto;
 class JuridicoController extends Controller
 {
     public function index(){
-        return view('juridico.assuntos');
+        $assuntos = assunto::get();
+        return view('juridico.assuntos',compact('assuntos'));
     }
     public function new(){
         return view('juridico.cadastra_assuntos');

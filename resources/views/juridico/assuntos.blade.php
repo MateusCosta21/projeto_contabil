@@ -17,17 +17,24 @@
                     <table class="table" id="clientes">
                         <thead>
                             <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Razão Social</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Cnpj</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Atualizado por:</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Data Cadastro</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Data Update</th>
-                                <th scope="col"></th>
-                                <th scope="col" class="d-none d-sm-table-cell"></th>
+                                <th scope="col">Assunto</th>
+                                <th scope="col" class="d-none d-sm-table-cell">Cadastrado por:</th>
+                                <th scope="col" class="d-none d-sm-table-cell">Data de Cadastro</th>
+                                <th scope="col" class="d-none d-sm-table-cell">Ultima Atualização</th>
+                                <th scope="col" class="d-none d-sm-table-cell">Ações</th>
                             </tr>
                         </thead>
-
+                        <tbody>
+                            @foreach($assuntos as $assunto)
+                            <tr>
+                                <td>{{$assunto->titulo}}</td>
+                                <td>{{$assunto->usuario->name}}</td>
+                                <td>{{date("d/m/Y", strtotime($assunto->created_at)) }}</td>
+                                <td>{{date("d/m/Y", strtotime($assunto->updated_at)) }}</td>
+                                <td> Ação </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
