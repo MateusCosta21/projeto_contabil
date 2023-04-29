@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ClientesController;
 
 
 /*
@@ -34,8 +35,8 @@ Route::post('/registrar', [App\Http\Controllers\UsuariosController::class, 'add'
 /* INICIO CLIENTES*/
 Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes')->middleware('auth');
 Route::get('/cadastra_cliente', function () {return view('clientes.cadastra_cliente');})->name('cadastra_cliente')->middleware('auth');
-Route::post('/cadastra_cliente/add', [App\Http\Controllers\ClientesController::class, 'add'])->name('add')->middleware('auth');
-Route::get('/cadastra_cliente/{id}/edit', [App\Http\Controllers\ClientesController::class, 'edit'])->name('edit')->middleware('auth');;
+Route::post('/cadastra_cliente/add', [ClientesController::class, 'add'])->name('add')->middleware('auth');
+Route::get('/cadastra_cliente/{id}/edit', [ClientesController::class, 'edit'])->name('edit')->middleware('auth');;
 Route::post('/cadastra_cliente/update/{id}', [App\Http\Controllers\ClientesController::class, 'update'])->name('update')->middleware('auth');;
 Route::delete('/cadastra_cliente/delete/{id}', [App\Http\Controllers\ClientesController::class, 'delete'])->name('delete')->middleware('auth');;
 /* FIM CLIENTES */
@@ -84,6 +85,7 @@ Route::delete('/juridico/assunto/{id}/delete', [App\Http\Controllers\JuridicoCon
 
 
 
+Route::get('/buscacnpj/{cnpj}', [ClientesController::class, 'buscaCNPJ'])->name('busca_cnpj');
 
 
 

@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group">
                   <label for="cnpj">CNPJ:</label>
-                  <input type="text" class="form-control" id="cnpj" name="cnpj">
+                  <input type="text" class="form-control" id="cnpj" name="cnpj" onblur="preencherEndereco()">
                 </div>
                 <div class="form-group">
                   <label for="razao_social">Razão Social:</label>

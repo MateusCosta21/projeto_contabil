@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#cnpj').mask('00.000.000/0000-00');
+    //$('#cnpj').mask('00.000.000/0000-00');
 });
 
 
@@ -49,5 +49,30 @@ function deleteItem(url) {
     })
     .catch(error => {
       console.error(error);
+    });
+  }
+
+  function preencherEndereco() {
+    var cnpj = $("#cnpj").val();
+    $.ajax({
+      url: "/buscacnpj/" + cnpj,
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+        $("#bairro").val(data.bairro || "");
+        $("#cidade").val(data.cidade || "");
+        $("#estado").val(data.estado || "");
+        $("#cep").val(data.cep || "");
+        $("#rua").val(data.rua || "");
+        $("#numero").val(data.numero || "");
+        $("#razao_social").val(data.razao_social || "");
+        $("#nome").val(data.razao_social || "");
+        $("#telefone").val(data.telefone || "");
+        $("#email").val(data.email || "");
+        $("#cnpj").val(data.cnpj || "");
+      },
+      error: function(xhr, status, error) {
+        console.log("Error: " + error);
+      }
     });
   }
