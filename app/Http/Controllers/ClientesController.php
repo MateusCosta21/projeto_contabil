@@ -17,8 +17,10 @@ class ClientesController extends Controller
         try {
             $cliente = new Cliente();
             $cliente = $cliente->create($request->all());
+          
             return redirect('clientes')->with('success', 'Cadastro realizado com sucesso!');
         } catch (\Exception $e) {
+            dd($e);
             return redirect()->back()->withInput()->withErrors(['Cadastro não pode ser realizado']);
         }
     }

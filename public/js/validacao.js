@@ -54,6 +54,7 @@ function deleteItem(url) {
 
   function preencherEndereco() {
     var cnpj = $("#cnpj").val();
+    $('#loadingModal').modal('show');
     $.ajax({
       url: "/buscacnpj/" + cnpj,
       type: "GET",
@@ -70,6 +71,8 @@ function deleteItem(url) {
         $("#telefone").val(data.telefone || "");
         $("#email").val(data.email || "");
         $("#cnpj").val(data.cnpj || "");
+        $('#loadingModal').modal('hide');
+
       },
       error: function(xhr, status, error) {
         console.log("Error: " + error);
