@@ -50,27 +50,42 @@ Route::post('/tipos_objetos/update/{id}', [App\Http\Controllers\TiposObjetoContr
 Route::delete('/tipos_objetos/delete/{id}', [App\Http\Controllers\TiposObjetoController::class, 'delete'])->name('delete_tipos')->middleware('auth');;
 /* fim Tipos de objeto*/
 
-
+///INICIO PRESTADOR
 Route::get('/prestadores', [App\Http\Controllers\PrestadoresController::class, 'index'])->name('prestadores')->middleware('auth');
 Route::get('/prestadores/novo', [App\Http\Controllers\PrestadoresController::class, 'new'])->name('novo_prestador')->middleware('auth');
 Route::post('/prestadores/add', [App\Http\Controllers\PrestadoresController::class, 'add'])->name('adiciona_prestador')->middleware('auth');
 Route::get('/prestadores/{id}/edit', [App\Http\Controllers\PrestadoresController::class, 'edit'])->name('edita_prestador')->middleware('auth');;
 Route::post('/prestadores/update/{id}', [App\Http\Controllers\PrestadoresController::class, 'update'])->name('update_prestador')->middleware('auth');;
 Route::delete('/prestadores/delete/{id}', [App\Http\Controllers\PrestadoresController::class, 'delete'])->name('delete_prestador')->middleware('auth');;
+/// FIM PRESTADOR
 
 
 
 
-
-
+//INICIO OBJETOS
 Route::post('/objeto/add', [App\Http\Controllers\ObjetoController::class, 'add'])->name('adiciona_objeto')->middleware('auth');
 Route::post('/objeto/enviaRota', [App\Http\Controllers\ObjetoController::class, 'enviaRota'])->name('enviaRota')->middleware('auth');
+Route::post('/objeto/update/{id}', [App\Http\Controllers\ObjetoController::class, 'update'])->name('edita_objeto')->middleware('auth');;
 Route::delete('/objeto/delete/{id}', [App\Http\Controllers\ObjetoController::class, 'delete'])->name('deletaRota')->middleware('auth');
 Route::post('/objeto/finaliza_processo', [App\Http\Controllers\ObjetoController::class, 'finaliza_processo'])->name('finaliza_processo')->middleware('auth');
 Route::post('/objeto/retorna_processo', [App\Http\Controllers\ObjetoController::class, 'retorna_processo'])->name('retorna_processo')->middleware('auth');
-
-
+Route::get('/objetos/consulta', [App\Http\Controllers\ObjetoController::class, 'index'])->name('consulta_objetos')->middleware('auth');
+Route::post('/objetos/buscaCliente', [App\Http\Controllers\ObjetoController::class, 'buscaCliente'])->name('buscaCliente')->middleware('auth');
 Route::get('/novo_modal', [App\Http\Controllers\ModalsController::class, 'index'])->name('novo_modal')->middleware('auth');;
+//FIM OBJETOS
+Route::get('/juridico/assuntos', [App\Http\Controllers\JuridicoController::class, 'index'])->name('assuntos_juridicos')->middleware('auth');
+Route::get('/juridico/assuntos/novo', [App\Http\Controllers\JuridicoController::class, 'new'])->name('novo_assunto')->middleware('auth');
+Route::post('/juridico/assunto/add', [App\Http\Controllers\JuridicoController::class, 'add'])->name('adiciona_assunto')->middleware('auth');
+Route::get('/juridico/assunto/{id}/edit', [App\Http\Controllers\JuridicoController::class, 'edit'])->name('edita_assunto')->middleware('auth');;
+Route::post('/juridico/assunto/{id}/update/', [App\Http\Controllers\JuridicoController::class, 'update'])->name('update_assuntos')->middleware('auth');;
+Route::delete('/juridico/assunto/{id}/delete', [App\Http\Controllers\JuridicoController::class, 'delete'])->name('delete_assunto')->middleware('auth');
+
+
+
+
+
+
+
 
 
 

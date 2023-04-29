@@ -636,3 +636,29 @@ table {
   .dataTables_wrapper table.dataTable tbody td {
     border: 1px solid #ddd; /* borda cinza claro */
   }
+
+.pp-color{
+    background-color: #d9edf7;
+}
+.huge{
+    color:#000;
+}
+.text-blue{
+    color:#4682B4;
+}
+
+.text-cinza{
+    color: #808080;
+}
+
+.text-laranja{
+   color: #fff;	
+}
+
+#icon{
+    background-color: #4169E1	;
+}
+#opcao_consulta{
+    width: 400px !important;
+
+}
