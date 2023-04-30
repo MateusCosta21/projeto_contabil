@@ -32,7 +32,7 @@
                                 <tr>
                                     <td class="text-wrap">{{$objeto->id}}</td>
                                     <td class="text-wrap d-none d-sm-table-cell">{{$objeto->descricao}}</td>
-                                    <td class="d-none d-sm-table-cell">{{ $objeto->cliente->nome }}</td>
+                                    <td class="text-wrap d-none d-sm-table-cell">{{ $objeto->cliente->nome }}</td>
                                     <td class="text-wrap d-none d-sm-table-cell">{{$objeto->tipo->nome}}</td>
                                     <td class="text-wrap d-none d-sm-table-cell">{{$objeto->usuario->name}}</td>
                                     <td class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($objeto->created_at)) }}
