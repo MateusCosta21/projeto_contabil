@@ -89,6 +89,8 @@ Route::delete('/juridico/assunto/{id}/delete', [App\Http\Controllers\JuridicoCon
 
 Route::get('/buscacnpj/{cnpj}', [ClientesController::class, 'buscaCNPJ'])->name('busca_cnpj');
 
+Route::get('/objeto/{id}/pdf', 'ObjetoController@gerarPdf')->name('objeto.pdf');
+Route::get('/objeto/{id}/pdf', [App\Http\Controllers\ObjetoController::class, 'gerarPdf'])->name('objeto.pdf')->middleware('auth');
 
 
 
