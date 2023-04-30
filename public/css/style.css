@@ -588,7 +588,7 @@ h1, .h1 {
   }
 
   #font-tamanho{
-    font-size:12px;
+    font-size:14px;
   }
 
   .dataTables_filter input {
@@ -661,4 +661,20 @@ table {
 #opcao_consulta{
     width: 400px !important;
 
+}
+
+tr th.col-destinatario {
+    width: 5%;
+  }
+  
+  tr th.col-objeto {
+    width: 30%;
+  }
+  
+  tr th.col-acao {
+    width: 20%;
+  }
+
+  #acoes button {
+    margin-bottom: 5px;
 }

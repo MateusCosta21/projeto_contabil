@@ -203,7 +203,7 @@
                             <tr>
                                 <th class="col-12 col-sm-6">Destinatário</th>
                                 <th class="col-12 col-sm-6">Objeto</th>
-                                <th class="d-none d-sm-table-cell">Ação</th>
+                                <th class="col-12 col-sm-6">Ação</th>
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
@@ -220,7 +220,7 @@
                                             <strong>Data
                                                 limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
                                         </td>
-                                        <td class="d-none d-sm-table-cell btn-group">
+                                        <td id="acoes" class="col-12 col-sm-6 d-flex flex-column">
                                             <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
                                                 data-target="#atualizarStatusModal{{ $objeto->id }}">
                                                 <i class="fas fa-sync-alt"></i>
