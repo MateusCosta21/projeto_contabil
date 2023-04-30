@@ -72,8 +72,13 @@
                                     <a href="#" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile
                                     </a>
                                     <div class="nav-item-divider"></div>
-                                    <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i>
-                                        Logout </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    
+                                    <a href="#" class="dashboard-nav-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
                     </nav>
                 </div>
                 <div class='dashboard-app'>

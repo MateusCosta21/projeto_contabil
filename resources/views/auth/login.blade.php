@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6 bg-info p-5 d-flex flex-column justify-content-center align-items-center">
             <!-- Coloque aqui seu conteúdo para o banner informativo -->
-            <h1 style="margin-top: 45px;" id="titulo">SGP</h1>
+            <h1 style="margin-top: 45px;" id="titulo"><img src="{{ asset('img/logo.png') }}" width="250px" height="250px" alt="logop" draggable="false" style="background-color: transparent;"></h1>
         </div>
         <div class="col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center align-items-center">
             <!-- Coloque aqui o formulário de login -->

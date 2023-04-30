@@ -16,5 +16,9 @@ return [
     'failed' => 'Credenciais incorretas',
     'password' => 'Senha incorreta',
     'throttle' => 'Muitas tentativas de login. Tente novamente em alguns segundos',
+    'logout' => [
+        'method' => 'POST',
+        'logout-url' => '/logout',
+    ],
 
 ];
