@@ -113,7 +113,7 @@
                                         <th class="d-none d-sm-table-cell">Ação</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="font-tamanho">
                                     @foreach ($retornaCadastro as $objeto)
                                         @if (
                                             ($objeto->op_envio == 1 && $objeto->status == 'Aguardando') ||
@@ -211,7 +211,7 @@
                                 @if ($objeto->status == 'Em Rota')
                                     <tr>
                                         <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
-                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
+                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;" id="campos">
                                             <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
                                             <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
                                             <br>

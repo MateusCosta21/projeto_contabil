@@ -584,7 +584,7 @@ h1, .h1 {
   }
 
   #op1{
-    font-size:12px;
+    font-size:14px;
   }
 
   #font-tamanho{
@@ -678,3 +678,9 @@ tr th.col-destinatario {
   #acoes button {
     margin-bottom: 5px;
 }
+@media only screen and (max-width: 600px) {
+    #font-tamanho, #op1 {
+      font-size: 20px;
+
+    }
+  }
