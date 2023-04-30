@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Exemplo de Recibo</title>
+    <title>Protocolo</title>
     <style type="text/css">
         body {
             font-family: Arial, sans-serif;
@@ -52,23 +52,32 @@
 
 <body>
     <header>
+        <h3> PROTOCOLO DE ENTREGA </h3>
         <table>
             <tr style="border:none">
-                <center> <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}" style="width:100px; height:100px"></center>
-                style="background-color: transparent;">
-                <td style="float:right">
-                    <strong style="float:right; font-size:25px;"> Id: {{$objeto->id}} </strong><br><br>
-                    <strong style="float:right; font-size: 8px;"> Emitido por:{{$objeto->usuario->name}} </strong><br>
-                    <strong style="float:right; font-size:6px;"> Impressão em: {{ date('d/m/Y H:i:s') }} </strong>
+                <center> <img
+                        src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}"
+                        style="width:100px; height:100px"></center>
+                <td>
+                    <center>
+                        <h3 style="margin-left:15px; margin-top:-15px"> PROTOCOLO DE ENTREGA </h3>
+                    </center>
+                    <strong style="float:right; font-size:25px; margin-top:-40px;"> Id: {{ $objeto->id }}
+                    </strong><br><br>
+                    <strong style="float:right; font-size: 10px; margin-top:-30px;"> Emitido
+                        por:{{ $objeto->usuario->name }} </strong><br>
+                    <strong style="float:right; font-size:7px; margin-top:-30px;"> Impressão em:
+                        {{ date('d/m/Y H:i:s') }} </strong>
                 </td>
         </table>
         <table>
             <tr>
                 <td>
                     <strong>Dados do Destinatário:</strong><br>
-                    <strong>Destinatário:</strong> {{$objeto->cliente->nome}}<br>
-                    <strong> CNPJ:</strong>  {{$objeto->cliente->cnpj}}<br>
-                    <strong>Endereço:</strong> {{$objeto->cliente->rua . "," . $objeto->cliente->numero . "," .$objeto->cliente->bairro . "," .$objeto->cliente->cidade . "," .$objeto->cliente->estado}}<br>
+                    <strong>Destinatário:</strong> {{ $objeto->cliente->nome }}<br>
+                    <strong> CNPJ:</strong> {{ $objeto->cliente->cnpj }}<br>
+                    <strong>Endereço:</strong>
+                    {{ $objeto->cliente->rua . ',' . $objeto->cliente->numero . ',' . $objeto->cliente->bairro . ',' . $objeto->cliente->cidade . ',' . $objeto->cliente->estado }}<br>
                 </td>
             </tr>
         </table>
@@ -80,11 +89,11 @@
                     <strong>Data envio:</strong> {{ date('d/m/Y', strtotime($objeto->data_envio)) }}<br>
                     <strong> Prazo de entrega:</strong> {{ date('d/m/Y', strtotime($objeto->data_limite)) }}8<br>
                     <strong>Tipo:</strong> {{ $objeto->tipo->nome }}<<br>
-                    <strong>Descrição:</strong>{{$objeto->descricao}}<br>
-                    <strong>Observações: </strong>{{$objeto->observacao}} <br>
-                    <br>
-                    <br>
-                    Recebido por: ________________________________________________________ DATA:__/__/_____
+                        <strong>Descrição:</strong>{{ $objeto->descricao }}<br>
+                        <strong>Observações: </strong>{{ $objeto->observacao }} <br>
+                        <br>
+                        <br>
+                        Recebido por: ________________________________________________________ DATA:__/__/_____
                 </td>
             </tr>
         </table>
@@ -105,20 +114,29 @@
     <header>
         <table>
             <tr style="border:none">
-               <center> <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}" style="width:100px; height:100px"></center>
-               <td style="float:right">
-                <strong style="float:right; font-size:25px;"> Id: {{$objeto->id}} </strong><br><br>
-                <strong style="float:right; font-size: 8px;"> Emitido por:{{$objeto->usuario->name}} </strong><br>
-                <strong style="float:right; font-size:6px;"> Impressão em: {{ date('d/m/Y H:i:s') }} </strong>
-            </td>
+                <center> <img
+                        src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}"
+                        style="width:100px; height:100px"></center>
+                <td>
+                    <center>
+                        <h3 style="margin-left:15px; margin-top:-15px"> PROTOCOLO DE ENTREGA </h3>
+                    </center>
+                    <strong style="float:right; font-size:25px; margin-top:-40px;"> Id: {{ $objeto->id }}
+                    </strong><br><br>
+                    <strong style="float:right; font-size: 10px; margin-top:-30px;"> Emitido
+                        por:{{ $objeto->usuario->name }} </strong><br>
+                    <strong style="float:right; font-size:7px; margin-top:-30px;"> Impressão em:
+                        {{ date('d/m/Y H:i:s') }} </strong>
+                </td>
         </table>
         <table>
             <tr>
                 <td>
                     <strong>Dados do Destinatário:</strong><br>
-                    <strong>Destinatário:</strong> {{$objeto->cliente->nome}}<br>
-                    <strong> CNPJ:</strong>  {{$objeto->cliente->cnpj}}<br>
-                    <strong>Endereço:</strong> {{$objeto->cliente->rua . "," . $objeto->cliente->numero . "," .$objeto->cliente->bairro . "," .$objeto->cliente->cidade . "," .$objeto->cliente->estado}}<br>
+                    <strong>Destinatário:</strong> {{ $objeto->cliente->nome }}<br>
+                    <strong> CNPJ:</strong> {{ $objeto->cliente->cnpj }}<br>
+                    <strong>Endereço:</strong>
+                    {{ $objeto->cliente->rua . ',' . $objeto->cliente->numero . ',' . $objeto->cliente->bairro . ',' . $objeto->cliente->cidade . ',' . $objeto->cliente->estado }}<br>
                 </td>
             </tr>
         </table>
@@ -130,11 +148,11 @@
                     <strong>Data envio:</strong> {{ date('d/m/Y', strtotime($objeto->data_envio)) }}<br>
                     <strong> Prazo de entrega:</strong> {{ date('d/m/Y', strtotime($objeto->data_limite)) }}8<br>
                     <strong>Tipo:</strong> {{ $objeto->tipo->nome }}<<br>
-                    <strong>Descrição:</strong>{{$objeto->descricao}}<br>
-                    <strong>Observações: </strong>{{$objeto->observacao}} <br>
-                    <br>
-                    <br>
-                    Recebido por: ________________________________________________________ DATA:__/__/_____
+                        <strong>Descrição:</strong>{{ $objeto->descricao }}<br>
+                        <strong>Observações: </strong>{{ $objeto->observacao }} <br>
+                        <br>
+                        <br>
+                        Recebido por: ________________________________________________________ DATA:__/__/_____
                 </td>
             </tr>
         </table>
