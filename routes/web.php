@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ClientesController;
 
 
 /*
@@ -26,6 +27,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/registro', function () {return view('registro');})->name('registro')->middleware('auth');
 
 Route::post('/registrar', [App\Http\Controllers\UsuariosController::class, 'add'])->name('registrar');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 
 /* MENU CADASTROS */
@@ -34,8 +37,8 @@ Route::post('/registrar', [App\Http\Controllers\UsuariosController::class, 'add'
 /* INICIO CLIENTES*/
 Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes')->middleware('auth');
 Route::get('/cadastra_cliente', function () {return view('clientes.cadastra_cliente');})->name('cadastra_cliente')->middleware('auth');
-Route::post('/cadastra_cliente/add', [App\Http\Controllers\ClientesController::class, 'add'])->name('add')->middleware('auth');
-Route::get('/cadastra_cliente/{id}/edit', [App\Http\Controllers\ClientesController::class, 'edit'])->name('edit')->middleware('auth');;
+Route::post('/cadastra_cliente/add', [ClientesController::class, 'add'])->name('add')->middleware('auth');
+Route::get('/cadastra_cliente/{id}/edit', [ClientesController::class, 'edit'])->name('edit')->middleware('auth');;
 Route::post('/cadastra_cliente/update/{id}', [App\Http\Controllers\ClientesController::class, 'update'])->name('update')->middleware('auth');;
 Route::delete('/cadastra_cliente/delete/{id}', [App\Http\Controllers\ClientesController::class, 'delete'])->name('delete')->middleware('auth');;
 /* FIM CLIENTES */
@@ -84,7 +87,10 @@ Route::delete('/juridico/assunto/{id}/delete', [App\Http\Controllers\JuridicoCon
 
 
 
+Route::get('/buscacnpj/{cnpj}', [ClientesController::class, 'buscaCNPJ'])->name('busca_cnpj');
 
+Route::get('/objeto/{id}/pdf', 'ObjetoController@gerarPdf')->name('objeto.pdf');
+Route::get('/objeto/{id}/pdf', [App\Http\Controllers\ObjetoController::class, 'gerarPdf'])->name('objeto.pdf')->middleware('auth');
 
 
 

@@ -41,7 +41,7 @@
                         </div>
                         <div class="text-center text-cinza">Em rota</div>
                     </div>
-                    <a href='#em-processamento'>
+                    <a href='#rota'>
                         <div class="card-footer text-center">
                             <span class="text-cinza">Ver detalhes</span>
                             <i class="fas fa-arrow-circle-right text-cinza"></i>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="text-center text-laranja">No Condomínio/Cliente</div>
                     </div>
-                    <a href='#em-processamento'>
+                    <a href='#condominio'>
                         <div class="card-footer text-center">
                             <span class="text-laranja">Ver detalhes</span>
                             <i class="fas fa-arrow-circle-right text-laranja"></i>
@@ -94,7 +94,7 @@
         <button type="button" class="btn btn-info btn-lg mt-5 ml-3" data-toggle="modal" data-target="#cadastroModal">
             <i class="fas fa-plus"></i> Cadastrar objeto
         </button>
-        @include('layouts.modals');
+        @include('layouts.modals')
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
@@ -113,7 +113,7 @@
                                         <th class="d-none d-sm-table-cell">Ação</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="font-tamanho">
                                     @foreach ($retornaCadastro as $objeto)
                                         @if (
                                             ($objeto->op_envio == 1 && $objeto->status == 'Aguardando') ||
@@ -158,7 +158,7 @@
                             <tr>
                                 <th>Objeto</th>
                                 <th>Destinatário</th>
-                                <th class="d-none d-sm-table-cell">Ação</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -203,7 +203,7 @@
                             <tr>
                                 <th class="col-12 col-sm-6">Destinatário</th>
                                 <th class="col-12 col-sm-6">Objeto</th>
-                                <th class="d-none d-sm-table-cell">Ação</th>
+                                <th class="col-12 col-sm-6">Ação</th>
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
@@ -211,7 +211,7 @@
                                 @if ($objeto->status == 'Em Rota')
                                     <tr>
                                         <td class="col-12 col-sm-6">{{ $objeto->cliente->nome }} </td>
-                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;">
+                                        <td class="col-12 col-sm-6" style="word-wrap: break-word;" id="campos">
                                             <strong>Descrição:</strong> {{ $objeto->descricao }}<br>
                                             <strong>Tipo:</strong> {{ $objeto->tipo->nome }}
                                             <br>
@@ -220,7 +220,7 @@
                                             <strong>Data
                                                 limite:</strong>{{ date('d/m/Y', strtotime($objeto->data_limite)) }}
                                         </td>
-                                        <td class="d-none d-sm-table-cell btn-group">
+                                        <td id="acoes" class="col-12 col-sm-6 d-flex flex-column">
                                             <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
                                                 data-target="#atualizarStatusModal{{ $objeto->id }}">
                                                 <i class="fas fa-sync-alt"></i>
@@ -259,8 +259,8 @@
                             <tr>
                                 <th class="col-12 col-sm-6">Objeto</th>
                                 <th class="col-12 col-sm-6">Destinatário</th>
-                                <th class="d-none d-sm-table-cell">Tipo de objeto</th>
-                                <th class="d-none d-sm-table-cell">Ações</th>
+                                <th class="col-12 col-sm-6">Tipo de objeto</th>
+                                <th class="col-12 col-sm-6">Ações</th>
                             </tr>
                         </thead>
                         <tbody id="font-tamanho">
@@ -321,9 +321,9 @@
                             <tr>
                                 <th class="col-12 col-sm-6">Objeto</th>
                                 <th class="col-12 col-sm-6">Destinatário</th>
-                                <th class="d-none d-sm-table-cell">Tipo de objeto</th>
-                                <th class="d-none d-sm-table-cell">Status atual</th>
-                                <th class="d-none d-sm-table-cell">Ações</th>
+                                <th class="col-12 col-sm-6">Tipo de objeto</th>
+                                <th class="col-12 col-sm-6">Status atual</th>
+                                <th class="col-12 col-sm-6">Ações</th>
 
                             </tr>
                         </thead>

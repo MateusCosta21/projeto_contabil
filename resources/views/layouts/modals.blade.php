@@ -314,8 +314,9 @@
                         <button title="Editar Objeto" type="button" class="btn btn-secondary btn-sm"
                             data-dismiss="modal" data-toggle="modal" data-target="#editarObjetos{{ $objeto->id }}"><i
                                 class="fa fa-edit"></i> Editar</button>
-                        <button title="Imprimir Protocolo" type="button" class="btn btn-info btn-sm"><i
-                                class="fa fa-print" aria-hidden="true"></i> Imprimir Protocolo</button>
+                                <button title="Imprimir Protocolo" type="button" class="btn btn-info btn-sm" onclick="window.open('{{ route('objeto.pdf', $objeto->id) }}')">
+                                    <i class="fa fa-print" aria-hidden="true" target="_blank"></i> Imprimir Protocolo
+                                </button>
 
                         <form action="{{ route('deletaRota', ['id' => $objeto->id]) }}" method="post"
                             onsubmit="return confirm('Tem certeza que deseja excluir este item?')">

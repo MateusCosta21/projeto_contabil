@@ -7,6 +7,8 @@ use App\Models\Objetos;
 use App\Models\historico;
 use App\Models\Cliente;
 use App\Models\TipoObjeto;
+use Dompdf\Dompdf;
+
 
 
 class ObjetoController extends Controller
@@ -115,13 +117,13 @@ class ObjetoController extends Controller
         $opcao = $request->input('opcao_consulta');
         $tipoBusca = $request->input('tipo');
 
-        if($tipoBusca == 'cliente'){
+        if ($tipoBusca == 'cliente') {
             $objetos = Objetos::where('cliente_id', $opcao)->get();
         }
-        if($tipoBusca == 'tipo'){
+        if ($tipoBusca == 'tipo') {
             $objetos = Objetos::where('tipo_id', $opcao)->get();
         }
-        if($tipoBusca == 'id'){
+        if ($tipoBusca == 'id') {
             $objetos = Objetos::where('id', $opcao)->get();
         }
 
@@ -132,6 +134,26 @@ class ObjetoController extends Controller
         return view('consulta-objetos.objetosRespostas', ['objetos' => $objetos]);
     }
 
+    public function gerarPdf($id)
+    {
+        // Busque o objeto com o ID fornecido
+        $objeto = Objetos::findOrFail($id);
+
+        // Renderize o HTML do protocolo
+        $html = view('protocolo', compact('objeto'))->render();
+
+        // Instancie o Dompdf
+        $dompdf = new Dompdf();
+
+        // Carregue o HTML no Dompdf
+        $dompdf->loadHtml($html);
+
+        // Renderize o PDF
+        $dompdf->render();
+
+        // Retorne o PDF gerado
+        return $dompdf->stream('protocolo.pdf');
+    }
 
 
     public function delete($id)

@@ -584,11 +584,11 @@ h1, .h1 {
   }
 
   #op1{
-    font-size:12px;
+    font-size:14px;
   }
 
   #font-tamanho{
-    font-size:12px;
+    font-size:14px;
   }
 
   .dataTables_filter input {
@@ -662,3 +662,25 @@ table {
     width: 400px !important;
 
 }
+
+tr th.col-destinatario {
+    width: 5%;
+  }
+  
+  tr th.col-objeto {
+    width: 30%;
+  }
+  
+  tr th.col-acao {
+    width: 20%;
+  }
+
+  #acoes button {
+    margin-bottom: 5px;
+}
+@media only screen and (max-width: 600px) {
+    #font-tamanho, #op1 {
+      font-size: 20px;
+
+    }
+  }
