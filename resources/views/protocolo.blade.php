@@ -54,21 +54,21 @@
     <header>
         <table>
             <tr style="border:none">
-                <img src="{{ asset('img/logo.png') }}" width="250px" height="250px" alt="logop" draggable="false"
+                <center> <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}" style="width:100px; height:100px"></center>
                 style="background-color: transparent;">
                 <td style="float:right">
-                    <strong style="float:right"> Id: </strong><br>
-                    <strong style="float:right"> Emitido: </strong><br>
-                    <strong style="float:right"> Impressão em: 30/04/2023 15:40:26 </strong><br>
+                    <strong style="float:right; font-size:25px;"> Id: {{$objeto->id}} </strong><br><br>
+                    <strong style="float:right; font-size: 8px;"> Emitido por:{{$objeto->usuario->name}} </strong><br>
+                    <strong style="float:right; font-size:6px;"> Impressão em: {{ date('d/m/Y H:i:s') }} </strong>
                 </td>
         </table>
         <table>
             <tr>
                 <td>
                     <strong>Dados do Destinatário:</strong><br>
-                    <strong>Destinatário:</strong> EDIFICIO CONCEPT RESIDENCE CABO BRANCO<br>
-                    <strong> CNPJ:</strong> 23.529.848/0001-08<br>
-                    <strong>Endereço:</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
+                    <strong>Destinatário:</strong> {{$objeto->cliente->nome}}<br>
+                    <strong> CNPJ:</strong>  {{$objeto->cliente->cnpj}}<br>
+                    <strong>Endereço:</strong> {{$objeto->cliente->rua . "," . $objeto->cliente->numero . "," .$objeto->cliente->bairro . "," .$objeto->cliente->cidade . "," .$objeto->cliente->estado}}<br>
                 </td>
             </tr>
         </table>
@@ -77,11 +77,11 @@
             <tr>
                 <td>
                     <strong>Dados do Objeto:</strong><br>
-                    <strong>Data envio:</strong> EDIFICIO CONCEPT RESIDENCE CABO BRANCO<br>
-                    <strong> Prazo de entrega:</strong> 23.529.848/0001-08<br>
-                    <strong>Tipo:</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
-                    <strong>Descrição:</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
-                    <strong>Observações</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
+                    <strong>Data envio:</strong> {{ date('d/m/Y', strtotime($objeto->data_envio)) }}<br>
+                    <strong> Prazo de entrega:</strong> {{ date('d/m/Y', strtotime($objeto->data_limite)) }}8<br>
+                    <strong>Tipo:</strong> {{ $objeto->tipo->nome }}<<br>
+                    <strong>Descrição:</strong>{{$objeto->descricao}}<br>
+                    <strong>Observações: </strong>{{$objeto->observacao}} <br>
                     <br>
                     <br>
                     Recebido por: ________________________________________________________ DATA:__/__/_____
@@ -91,7 +91,7 @@
         <table>
             <tr>
                 <td>
-                    <center><strong>PONTUAL CONTABILIADE E ADMINSTRAÇÃO DE CONDOMÍNIOS LTDA</strong> </center>
+                    <center><strong>PONTUAL CONTABILIDADE E ADMINSTRAÇÃO DE CONDOMÍNIOS LTDA</strong> </center>
                     <center>R. Inácio Ramos de Andrade, 282B, Sala 201, Jd. Cid. Universitária - João Pessoa-PB. Tel.:
                         (83) 3045-1954 / 98895-9535</center>
                 </td>
@@ -105,21 +105,20 @@
     <header>
         <table>
             <tr style="border:none">
-                <img src="https://i.imgur.com/LFSrEDU.png" width="250px" height="250px" alt="logop" draggable="false"
-                style="background-color: transparent;">
-                <td style="float:right">
-                    <strong style="float:right"> Id: </strong><br>
-                    <strong style="float:right"> Emitido: </strong><br>
-                    <strong style="float:right"> Impressão em: 30/04/2023 15:40:26 </strong><br>
-                </td>
+               <center> <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}" style="width:100px; height:100px"></center>
+               <td style="float:right">
+                <strong style="float:right; font-size:25px;"> Id: {{$objeto->id}} </strong><br><br>
+                <strong style="float:right; font-size: 8px;"> Emitido por:{{$objeto->usuario->name}} </strong><br>
+                <strong style="float:right; font-size:6px;"> Impressão em: {{ date('d/m/Y H:i:s') }} </strong>
+            </td>
         </table>
         <table>
             <tr>
                 <td>
                     <strong>Dados do Destinatário:</strong><br>
-                    <strong>Destinatário:</strong> EDIFICIO CONCEPT RESIDENCE CABO BRANCO<br>
-                    <strong> CNPJ:</strong> 23.529.848/0001-08<br>
-                    <strong>Endereço:</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
+                    <strong>Destinatário:</strong> {{$objeto->cliente->nome}}<br>
+                    <strong> CNPJ:</strong>  {{$objeto->cliente->cnpj}}<br>
+                    <strong>Endereço:</strong> {{$objeto->cliente->rua . "," . $objeto->cliente->numero . "," .$objeto->cliente->bairro . "," .$objeto->cliente->cidade . "," .$objeto->cliente->estado}}<br>
                 </td>
             </tr>
         </table>
@@ -128,11 +127,11 @@
             <tr>
                 <td>
                     <strong>Dados do Objeto:</strong><br>
-                    <strong>Data envio:</strong> EDIFICIO CONCEPT RESIDENCE CABO BRANCO<br>
-                    <strong> Prazo de entrega:</strong> 23.529.848/0001-08<br>
-                    <strong>Tipo:</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
-                    <strong>Descrição:</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
-                    <strong>Observações</strong> RUA PAULINO PINTO, 141, CABO BRANCO, JOAO PESSOA, PB<br>
+                    <strong>Data envio:</strong> {{ date('d/m/Y', strtotime($objeto->data_envio)) }}<br>
+                    <strong> Prazo de entrega:</strong> {{ date('d/m/Y', strtotime($objeto->data_limite)) }}8<br>
+                    <strong>Tipo:</strong> {{ $objeto->tipo->nome }}<<br>
+                    <strong>Descrição:</strong>{{$objeto->descricao}}<br>
+                    <strong>Observações: </strong>{{$objeto->observacao}} <br>
                     <br>
                     <br>
                     Recebido por: ________________________________________________________ DATA:__/__/_____
@@ -142,7 +141,7 @@
         <table>
             <tr>
                 <td>
-                    <center><strong>PONTUAL CONTABILIADE E ADMINSTRAÇÃO DE CONDOMÍNIOS LTDA</strong> </center>
+                    <center><strong>PONTUAL CONTABILIDADE E ADMINSTRAÇÃO DE CONDOMÍNIOS LTDA</strong> </center>
                     <center>R. Inácio Ramos de Andrade, 282B, Sala 201, Jd. Cid. Universitária - João Pessoa-PB. Tel.:
                         (83) 3045-1954 / 98895-9535</center>
                 </td>
