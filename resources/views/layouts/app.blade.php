@@ -60,17 +60,18 @@
                             <a href="#" class="dashboard-nav-dropdown-item">All</a>
                         </div>-->
                         
-                                <div class='dashboard-nav-dropdown'>
+                                <!--<div class='dashboard-nav-dropdown'>
                                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                                         <i class="fas fa-balance-scale"></i> Júridico </a>
                                     <div class='dashboard-nav-dropdown-menu'>
                                         <a href="{{route('assuntos_juridicos')}}" class="dashboard-nav-dropdown-item">Assuntos</a>
                                         <a href="#" class="dashboard-nav-dropdown-item">Notificações</a>
                                     </div>
+                                </div>
                                     <a href="#" class="dashboard-nav-item">
                                         <i class="fas fa-cogs"></i> Settings </a>
                                     <a href="#" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile
-                                    </a>
+                                    </a>-->
                                     <div class="nav-item-divider"></div>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -79,6 +80,7 @@
                                     <a href="#" class="dashboard-nav-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
+                                </div>
                     </nav>
                 </div>
                 <div class='dashboard-app'>

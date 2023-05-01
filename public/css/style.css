@@ -681,6 +681,32 @@ tr th.col-destinatario {
 @media only screen and (max-width: 600px) {
     #font-tamanho, #op1 {
       font-size: 20px;
-
     }
   }
+
+@media only screen and (max-width: 576px) {
+    #pdefault{
+        width: 500px !important;
+    }
+    body {
+        overflow: hidden; /* desativa o overflow */
+      }
+}
+  @media only screen and (min-width: 577px) and (max-width: 992px) {
+    #pdefault{
+        width: 500px !important;
+    }
+    body {
+        overflow: hidden; /* desativa o overflow */
+      }
+  }
+
+  .even td {
+    border-bottom: none;
+  }
+  table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    border-bottom: none;
+}
