@@ -16,31 +16,31 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Descrição</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Cliente</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Tipo de objeto</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Cadastrado por</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Data Cadastro</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Ultima atualização</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Status Atual</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Digitalizado</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Ações</th>
+                                <th scope="col" >Descrição</th>
+                                <th scope="col" >Cliente</th>
+                                <th scope="col" >Tipo de objeto</th>
+                                <th scope="col" >Cadastrado por</th>
+                                <th scope="col" >Data Cadastro</th>
+                                <th scope="col" >Ultima atualização</th>
+                                <th scope="col" >Status Atual</th>
+                                <th scope="col" >Digitalizado</th>
+                                <th scope="col" >Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($objetos as $objeto)
                                 <tr>
                                     <td class="text-wrap">{{$objeto->id}}</td>
-                                    <td class="text-wrap d-none d-sm-table-cell">{{$objeto->descricao}}</td>
-                                    <td class="text-wrap d-none d-sm-table-cell">{{ $objeto->cliente->nome }}</td>
-                                    <td class="text-wrap d-none d-sm-table-cell">{{$objeto->tipo->nome}}</td>
-                                    <td class="text-wrap d-none d-sm-table-cell">{{$objeto->usuario->name}}</td>
-                                    <td class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($objeto->created_at)) }}
+                                    <td class="text-wrap ">{{$objeto->descricao}}</td>
+                                    <td class="text-wrap ">{{ $objeto->cliente->nome }}</td>
+                                    <td class="text-wrap ">{{$objeto->tipo->nome}}</td>
+                                    <td class="text-wrap ">{{$objeto->usuario->name}}</td>
+                                    <td >{{ date('d/m/Y', strtotime($objeto->created_at)) }}
                                     </td>
-                                    <td class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($objeto->updated_at)) }}
+                                    <td >{{ date('d/m/Y', strtotime($objeto->updated_at)) }}
                                     </td>
-                                    <td class="text-wrap d-none d-sm-table-cell">{{$objeto->status}}</td>
-                                    <td class="text-wrap d-none d-sm-table-cell">
+                                    <td class="text-wrap ">{{$objeto->status}}</td>
+                                    <td class="text-wrap ">
                                         <span class="badge {{ $objeto->digitalizado == 0 ? 'badge-warning' : 'badge-success' }}">
                                             {{ $objeto->digitalizado == 0 ? 'Não digitalizado' : 'Digitalizado' }}
                                         </span>
