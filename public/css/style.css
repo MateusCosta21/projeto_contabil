@@ -1,3 +1,6 @@
+body{
+    font-size:14px;
+}
 .card-header {
     background-color: #243452;
     color: #fff;
@@ -679,8 +682,17 @@ tr th.col-destinatario {
     margin-bottom: 5px;
 }
 @media only screen and (max-width: 600px) {
-    #font-tamanho, #op1 {
-      font-size: 20px;
-
+    #testes{
+        margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    table.dataTable.responsive {
+      width: 100% !important;
+    }
+    table.dataTable.responsive td {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
