@@ -681,3 +681,27 @@ tr th.col-destinatario {
   #acoes button {
     margin-bottom: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+#testes2{
+    margin-top:20px;
+}
+#act{
+    width:5%;
+}
+.pp-color{
+    width: 160%;
+    display: flex;
+    justify-content: center;
+    margin-left:100px;
+}
+.butt{
+   
+}
+
+
+  li {
+    list-style-type: none;
+  }
+}
+  

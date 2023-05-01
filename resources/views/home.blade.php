@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-5 col-md-3">
-                <div class="card" style="background-color:#DCDCDC"	;>
+                <div class="card pp-color" style="background-color:#DCDCDC"	;>
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
                             <i class="fa fa-motorcycle fa-3x text-cinza"></i>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col-5 col-md-3">
-                <div class="card" style="background-color:#FFD700">
+                <div class="card pp-color" style="background-color:#FFD700">
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
                             <i class="fa fa-building fa-3x text-laranja"></i>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-5 col-md-3">
-                <div class="card bg-danger">
+                <div class="card pp-color bg-danger">
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
                             <i class="fa fa-hourglass fa-3x text-white"></i>
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-info btn-lg mt-5 ml-3" data-toggle="modal" data-target="#cadastroModal">
+        <button type="button" class="btn btn-info btn-lg mt-5 ml-3 btn-sm butt" id="btn" data-toggle="modal" data-target="#cadastroModal">
             <i class="fas fa-plus"></i> Cadastrar objeto
         </button>
         <hr>
@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="panel panel-default" id="testes">
+                <div class="panel panel-default" id="testes2">
                     <div class="card-header">
                         <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
                                 Cliente</small></h4>
@@ -202,7 +202,7 @@
                             <table class="table table-sm" id="clientes">
                                 <thead>
                                     <tr>
-                                        <th>Destinatário</th>
+                                        <th width="30%">Destinatário</th>
                                         <th>Objeto</th>
                                         <th width="7%">Ação</th>
                                     </tr>
@@ -272,9 +272,9 @@
                                 <thead>
                                     <tr>
                                         <th>Objeto</th>
-                                        <th>Destinatário</th>
-                                        <th>Tipo de objeto</th>
-                                        <th width="10%">Ação</th>
+                                        <th class="d-none d-sm-table-cell">Destinatário</th>
+                                        <th class="d-none d-sm-table-cell">Tipo de objeto</th>
+                                        <th class="d-none d-sm-table-cell" width="10%">Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody id="font-tamanho">
@@ -282,7 +282,7 @@
                                         @if ($objeto->status == 'No condominio/Cliente' && $objeto->op_envio == 3)
                                             <tr>
                                                 <td class="text-wrap">{{ $objeto->descricao }} </td>
-                                                <td class="text-wrap">
+                                                <td class="d-none d-sm-table-cell" class="text-wrap">
                                                     {{ $objeto->cliente->nome }}
                                                     <h6><span class="badge badge-secondary">Este objeto deve retornar para
                                                             a
@@ -290,10 +290,10 @@
                                                             {{ \Carbon\Carbon::parse($objeto->data_limite)->format('d/m/Y') }}
                                                         </span></h6>
                                                 </td>
-                                                <td class="text-wrap">
+                                                <td class="d-none d-sm-table-cell" class="text-wrap">
                                                     {{ $objeto->tipo->nome }}
                                                 </td>
-                                                <td>
+                                                <td class="d-none d-sm-table-cell">
                                                     <div class="btn-group d-block" role="group">
                                                         <div class="row">
                                                             <div class="col-lg-2 col-12 mb-2">
@@ -347,7 +347,7 @@
                                         <th class="d-none d-sm-table-cell">Destinatário</th>
                                         <th class="d-none d-sm-table-cell">Tipo de objeto</th>
                                         <th class="d-none d-sm-table-cell">Status atual</th>
-                                        <th>Ações</th>
+                                        <th width="5%">Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody id="font-tamanho">
@@ -358,10 +358,10 @@
                                         @if ($dataLimite->isFuture())
                                             <tr>
                                                 <td>{{ $objeto->descricao }}</td>
-                                                <td>{{ $objeto->cliente->nome }}</td>
-                                                <td>{{ $objeto->tipo->nome }}</td>
-                                                <td>{{ $objeto->status }}</td>
-                                                <td>
+                                                <td  class="d-none d-sm-table-cell">{{ $objeto->cliente->nome }}</td>
+                                                <td  class="d-none d-sm-table-cell">{{ $objeto->tipo->nome }}</td>
+                                                <td  class="d-none d-sm-table-cell">{{ $objeto->status }}</td>
+                                                <td id="act">
                                                     <button title="Historico" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#historico{{ $objeto->id }}">
                                                         <i class="fa fa-search"></i>
                                                     </button>
