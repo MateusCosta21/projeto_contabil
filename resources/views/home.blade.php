@@ -5,9 +5,9 @@
     {{ session('success') }}
 </div>
 @endif
-    <div class="container-fluid pt-4 px-4">
-        <div class="row d-flex justify-content-center">
-            <div class="col-sm-6 col-xl-3">
+    <div class="container-fluid pt-4">
+        <div class="row flex-wrap flex-column flex-md-row">
+            <div class="col-5 col-md-3">
                 <div class="card pp-color" style="background-color:#ADD8E6	;">
                     <div class="card-header" >
                         <div class="d-flex justify-content-center">
@@ -29,7 +29,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-5 col-md-3">
                 <div class="card" style="background-color:#DCDCDC"	;>
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
@@ -49,7 +49,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-5 col-md-3">
                 <div class="card" style="background-color:#FFD700">
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
@@ -69,7 +69,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-5 col-md-3">
                 <div class="card bg-danger">
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
