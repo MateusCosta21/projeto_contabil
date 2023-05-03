@@ -109,14 +109,32 @@
                         <br>
                         <h1 class="text-center"> Novo cliente </h1>
                         <div class="form-group">
+                            <label>Tipo de cliente:</label><br>
+                            <input type="radio" name="tipo" value="1"> Condomínio<br>
+                            <input type="radio" name="tipo" value="2"> Condômino<br>
+                            <input type="radio" name="tipo" value="3"> Outros<br>
+                        </div>
+
+                        <div class="form-group">
                             <label for="nome">Nome:</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
                         </div>
                         <div class="form-group">
-                            <label for="cnpj">CNPJ:</label>
-                            <input type="text" class="form-control" id="cnpj" name="cnpj"
-                                onblur="preencherEndereco()" required>
+                            <label for="cnpj" style="display: none">CNPJ:</label>
+                            <input type="text" class="form-control" id="cnpj_cadastro" name="cnpj"
+                                onblur="preencherEndereco()">
                         </div>
+
+                        <div class="form-group">
+                            <label for="cpf" style="display: none">CPF:</label>
+                            <input type="text" class="form-control" id="cpf_cadastro" name="cpf">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cnpj_cpf" style="display: none">CNPJ/CPF</label>
+                            <input type="text" class="form-control" id="cnpj_cpf_cadastro" name="cnpj_cpf">
+                        </div>
+
                         <div class="form-group">
                             <label for="razao_social">Razão Social:</label>
                             <input type="text" class="form-control" id="razao_social" name="razao_social" required>
@@ -139,7 +157,7 @@
                         </div>
                         <div class="form-group">
                             <label for="rua">Rua</label>
-                            <input type="text" class="form-control" id="rua" name="rua" required> 
+                            <input type="text" class="form-control" id="rua" name="rua" required>
                         </div>
                         <div class="form-group">
                             <label for="numero">Número</label>
@@ -147,7 +165,7 @@
                         </div>
                         <div class="form-group">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" id="complemento" name="complemento" required>
+                            <input type="text" class="form-control" id="complemento" name="complemento">
                         </div>
                         <div class="form-group">
                             <label for="bairro">Bairro</label>
@@ -168,6 +186,56 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Obtenha os elementos DOM relevantes
+        const cnpjLabel = document.querySelector('label[for="cnpj"]');
+        const cnpjCpfLabel = document.querySelector('label[for="cnpj_cpf"]');
+        const cpfLabel = document.querySelector('label[for="cpf"]');
+        const cnpjInput = document.querySelector('#cnpj_cadastro');
+        const cpfInput = document.querySelector('#cpf_cadastro');
+        const cpfCpnjInput = document.querySelector("#cnpj_cpf_cadastro");
+        const radioButtons = document.querySelectorAll('input[name="tipo"]');
+
+        // Adicione um evento de mudança a todos os botões de rádio
+        radioButtons.forEach(button => {
+            button.addEventListener('change', () => {
+                // Verifique qual botão de rádio foi selecionado
+                if (button.value === "1") {
+                    // Exiba o campo CNPJ e oculte o campo CPF
+                    cnpjLabel.style.display = "block";
+                    cnpjInput.style.display = "block";
+                    cnpjCpfLabel.style.display = "none";
+                    cpfCpnjInput.style.display = "none";
+                    cpfLabel.style.display = "none";
+                    cpfInput.style.display = "none";
+                } else if (button.value === "2") {
+                    // Exiba o campo CPF e oculte o campo CNPJ
+                    cnpjLabel.style.display = "none";
+                    cnpjInput.style.display = "none";
+                    cpfLabel.style.display = "block";
+                    cpfInput.style.display = "block";
+                    cnpjCpfLabel.style.display = "none";
+                    cpfCpnjInput.style.display = "none";
+                } else if(button.value === "3"){
+                    cnpjLabel.style.display = "none";
+                    cnpjInput.style.display = "none";
+                    cpfLabel.style.display = "none";
+                    cpfInput.style.display = "none";
+                    cnpjCpfLabel.style.display = "block";
+                    cpfCpnjInput.style.display = "block";
+                } else {
+                    // Oculte ambos os campos
+                    cnpjLabel.style.display = "none";
+                    cnpjInput.style.display = "none";
+                    cpfLabel.style.display = "none";
+                    cpfInput.style.display = "none";
+                    cnpjCpfLabel.style.display = "none";
+                    cpfCpnjInput.style.display = "none";
+                }
+            });
+        });
+    </script>
 @endsection
 
 

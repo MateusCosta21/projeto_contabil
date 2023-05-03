@@ -53,7 +53,7 @@ function deleteItem(url) {
   }
 
   function preencherEndereco() {
-    var cnpj = $("#cnpj").val();
+    var cnpj = $("#cnpj_cadastro").val();
     $('#loadingModal').modal('show');
     $.ajax({
       url: "/buscacnpj/" + cnpj,
@@ -70,7 +70,7 @@ function deleteItem(url) {
         $("#nome").val(data.razao_social || "");
         $("#telefone").val(data.telefone || "");
         $("#email").val(data.email || "");
-        $("#cnpj").val(data.cnpj || "");
+        $("#cnpj_cadastro").val(data.cnpj || "");
         $('#loadingModal').modal('hide');
 
       },

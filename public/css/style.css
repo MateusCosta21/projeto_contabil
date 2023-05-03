@@ -696,3 +696,14 @@ tr th.col-destinatario {
       text-overflow: ellipsis;
     }
   }
+
+  #cpf_cadastro{
+    display:none;
+  }
+  #cnpj_cadastro{
+    display:none;
+  }
+
+  #cnpj_cpf_cadastro{
+    display:none;
+  }
