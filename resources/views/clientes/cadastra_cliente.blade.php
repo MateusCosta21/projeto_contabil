@@ -240,6 +240,8 @@
               cnpjCpfLabel.style.display = "none";
               lblRazao.style.display = "block";
               lblNomeFantasia.style.display = "block";
+              razaoSocial.style.display = "block";
+              nomeFantasia.style.display = "block";
             } else if (selectedOption.value === "2") {
               // Exiba o campo CPF e oculte o campo CNPJ e CNPJ/CPF
               cpfLabel.style.display = "block";
