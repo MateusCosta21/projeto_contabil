@@ -356,7 +356,7 @@
                                         @php
                                             $dataLimite = \Carbon\Carbon::parse($objeto->data_limite);
                                         @endphp
-                                        @if ($dataLimite->isFuture())
+                                        @if ($dataLimite->isPast())
                                             <tr>
                                                 <td>{{ $objeto->descricao }}</td>
                                                 <td>{{ $objeto->cliente->nome }}</td>
