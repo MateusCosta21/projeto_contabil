@@ -26,7 +26,7 @@
                                 <th scope="col" class="d-none d-sm-table-cell">Cnpj</th>
                                 <th scope="col" class="d-none d-sm-table-cell">Atualizado por:</th>
                                 <th scope="col" class="d-none d-sm-table-cell">Data Cadastro</th>
-                                <th scope="col" class="d-none d-sm-table-cell">Data Update</th>
+                                <th scope="col" class="d-none d-sm-table-cell">Tipo</th>
                                 <th scope="col" class="d-none d-sm-table-cell"></th>
                                 <th scope="col" class="d-none d-sm-table-cell"></th>
                             </tr>
@@ -50,8 +50,14 @@
                                     <td>{{$cliente->usuario->name}}</td>
                                     <td>{{ date('d/m/Y', strtotime($cliente->created_at)) }}
                                     </td>
-                                    <td  class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($cliente->updated_at)) }}
-                                    </td>
+                                    @if($cliente->tipo == 1)
+                                        <td> Condomínio </td>
+                                     @elseif($cliente->tipo == 2)
+                                        <td> Condômino </td>
+                                    @elseif($cliente->tipo == 3)
+                                        <td> Outros </td>
+                
+                                    @endif
                                     <td class="d-none d-sm-table-cell"><a href="{{ route('edit', ['id' => $cliente->id]) }}"
                                             class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>
                                     <td class="d-none d-sm-table-cell">
