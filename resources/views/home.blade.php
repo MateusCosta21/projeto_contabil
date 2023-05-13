@@ -99,6 +99,7 @@
         <button type="button" class="btn btn-info btn-lg mt-5 ml-3" data-toggle="modal" data-target="#cadastroModal">
             <i class="fas fa-plus"></i> Cadastrar objeto
         </button>
+        @include('layouts.modals');
         <hr>
         <div class="row">
             <div class="col-12 col-md-6">

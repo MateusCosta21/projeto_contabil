@@ -110,9 +110,9 @@
                         <h1 class="text-center"> Novo cliente </h1>
                         <div class="form-group">
                             <label>Tipo de cliente:</label><br>
-                            <input type="radio" name="tipo" value="1"> Condomínio<br>
-                            <input type="radio" name="tipo" value="2"> Condômino<br>
-                            <input type="radio" name="tipo" value="3"> Outros<br>
+                            <input type="radio" name="tipo" value="1" onchange="limparFormulario()" style="display: inline-block;"> Condomínio
+                            <input type="radio" name="tipo" value="2" onchange="limparFormulario()" style="display: inline-block;"> Condômino
+                            <input type="radio" name="tipo" value="3" onchange="limparFormulario()" style="display: inline-block;"> Outros
                         </div>
 
                         <div class="form-group">
@@ -132,7 +132,8 @@
 
                         <div class="form-group">
                             <label for="cnpj_cpf" style="display: none">CNPJ/CPF</label>
-                            <input type="text" class="form-control" id="cnpj_cpf_cadastro" name="cnpj_cpf">
+                            <input type="text" class="form-control" id="cnpj_cpf_cadastro" name="cnpj_cpf"
+                                onblur="verificarTipoDocumento()">
                         </div>
 
                         <div class="form-group">
@@ -217,7 +218,7 @@
                     cpfInput.style.display = "block";
                     cnpjCpfLabel.style.display = "none";
                     cpfCpnjInput.style.display = "none";
-                } else if(button.value === "3"){
+                } else if (button.value === "3") {
                     cnpjLabel.style.display = "none";
                     cnpjInput.style.display = "none";
                     cpfLabel.style.display = "none";

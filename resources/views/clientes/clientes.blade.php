@@ -19,7 +19,7 @@
                             <tr>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Razão Social</th>
-                                <th scope="col">Cnpj</th>
+                                <th scope="col">Cnpj/CPF</th>
                                 <th scope="col">Atualizado por:</th>
                                 <th scope="col">Data Cadastro</th>
                                 <th scope="col">Data Update</th>
@@ -33,7 +33,16 @@
                                 
                                     <td class="text-wrap">{{$cliente->nome}}</td>
                                     <td class="text-wrap">{{$cliente->razao_social}}</td>
-                                    <td>{{ $cliente->cnpj }}</td>
+                                    @php
+                                    if($cliente->cnpj){
+                                        echo "<td>$cliente->cnpj</td>";
+                                    }else if($cliente->cpf){
+                                        echo "<td>$cliente->cpf</td>";
+                                    }else{
+                                        echo "<td>$cliente->cnpj_cpf</td>";
+
+                                    }
+                                    @endphp
                                     <td>{{$cliente->usuario->name}}</td>
                                     <td>{{ date('d/m/Y', strtotime($cliente->created_at)) }}
                                     </td>
