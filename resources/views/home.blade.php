@@ -87,7 +87,7 @@
                         </div>
                         <div class="text-center text-black">Fora do prazo</div>
                     </div>
-                    <a href='#em-processamento'>
+                    <a href='#fora_prazo'>
                         <div class="card-footer text-center">
                             <a href="#objetos_atraso"><span style="color:#fff;">Ver detalhes</span></a>
                             <i style="color:#fff;" class="fas fa-arrow-circle-right"></i>
@@ -103,7 +103,7 @@
         <hr>
         <div class="row">
             <div class="col-12 col-md-6">
-                <div class="panel panel-default" id="testes">
+                <div class="panel panel-default" id="em-processamento">
                     <div class="card-header">
                         <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">Na
                                 Pontual</small></h4>
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="panel panel-default" id="testes">
+                <div class="panel panel-default" id="em-processamento">
                     <div class="card-header">
                         <h4 class="card-title text-dark">Objetos aguardando envio <small class="text-muted">No
                                 Cliente</small></h4>
@@ -193,7 +193,7 @@
 
         <div class="row">
             <div class="col-12 col-md-12">
-                <div class="panel panel-default mt-5" id="testes">
+                <div class="panel panel-default mt-5" id="rota">
                     <div class="card-header">
                         <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos em rota <small
                                 class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
@@ -262,7 +262,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-12">
-                <div class="panel panel-default mt-5" id="testes">
+                <div class="panel panel-default mt-5" id="condominio">
                     <div class="card-header">
                         <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos no Condomínio/Cliente <small
                             class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
@@ -334,7 +334,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-12">
-                <div class="panel panel-default mt-5" id="testes">
+                <div class="panel panel-default mt-5" id="fora_prazo">
                     <div class="card-header">
                         <h4 class="card-title text-dark" style="font-size: 1.25rem;">Objetos com entrega em atraso <small
                                 class="text-muted">Até:<?php echo date('d/m/Y'); ?></small></h4>
