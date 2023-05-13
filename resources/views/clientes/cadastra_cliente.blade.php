@@ -41,12 +41,12 @@
                                     onblur="verificarTipoDocumento()">
                             </div>
                             <div class="form-group">
-                                <label for="razao_social">Razão Social:</label>
+                                <label for="lbl_razao">Razão Social:</label>
                                 <input type="text" class="form-control" id="razao_social" name="razao_social"
                                     value="{{ $cliente->razao_social }}">
                             </div>
                             <div class="form-group">
-                                <label for="nome_fantasia">Nome Fantasia</label>
+                                <label for="nm_fantasia">Nome Fantasia</label>
                                 <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia"
                                     value="{{ $cliente->nome_fantasia }}">
                             </div>
@@ -160,12 +160,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="razao_social">Razão Social:</label>
-                            <input type="text" class="form-control" id="razao_social" name="razao_social" required>
+                            <label for="lbl_razao">Razão Social:</label>
+                            <input type="text" class="form-control" id="razao_social" name="razao_social">
                         </div>
                         <div class="form-group">
-                            <label for="nome_fantasia">Nome Fantasia</label>
-                            <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" required>
+                            <label for="nm_fantasia">Nome Fantasia</label>
+                            <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia">
                         </div>
                         <div class="form-group">
                             <label for="telefone">Telefone</label>
@@ -219,6 +219,11 @@
         const cnpjInput = document.querySelector('#cnpj_cadastro');
         const cpfInput = document.querySelector('#cpf_cadastro');
         const cpfCpnjInput = document.querySelector("#cnpj_cpf_cadastro");
+        const razaoSocial = document.querySelector("#razao_social");
+        const nomeFantasia = document.querySelector("#nome_fantasia");
+        const lblRazao = document.querySelector('label[for="lbl_razao"]');
+        const lblNomeFantasia = document.querySelector('label[for="nm_fantasia"]');
+    
         const radioButtons = document.querySelectorAll('input[name="tipo"]');
       
         // Função para exibir ou ocultar os campos com base no valor do botão de opção selecionado
@@ -233,6 +238,8 @@
               cpfLabel.style.display = "none";
               cpfInput.style.display = "none";
               cnpjCpfLabel.style.display = "none";
+              lblRazao.style.display = "block";
+              lblNomeFantasia.style.display = "block";
             } else if (selectedOption.value === "2") {
               // Exiba o campo CPF e oculte o campo CNPJ e CNPJ/CPF
               cpfLabel.style.display = "block";
@@ -241,6 +248,10 @@
               cnpjCpfLabel.style.display = "none";
               cnpjLabel.style.display = "none";
               cpfCpnjInput.style.display = "none";
+              razaoSocial.style.display = "none";
+              nomeFantasia.style.display = "none";
+              lblRazao.style.display = "none";
+              lblNomeFantasia.style.display = "none";
             } else if (selectedOption.value === "3") {
               // Exiba o campo CNPJ/CPF e oculte o campo CPF e CNPJ
               cnpjCpfLabel.style.display = "block";

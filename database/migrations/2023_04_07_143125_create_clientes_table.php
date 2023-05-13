@@ -20,8 +20,8 @@ class CreateClientesTable extends Migration
             $table->string('cnpj',18)->nullable();
             $table->string('cpf',14)->nullable();
             $table->string('cnpj_cpf')->nullable();
-            $table->string('razao_social');
-            $table->string('nome_fantasia', 255);
+            $table->string('razao_social')->nullable();
+            $table->string('nome_fantasia', 255)->nullable();
             $table->string('telefone');
             $table->string('email',100);
             $table->string('cep',10);
