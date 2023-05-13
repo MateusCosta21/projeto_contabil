@@ -52,7 +52,6 @@
 
 <body>
     <header>
-        <h3> PROTOCOLO DE ENTREGA </h3>
         <table>
             <tr style="border:none">
                 <center> <img

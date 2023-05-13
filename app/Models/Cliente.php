@@ -8,7 +8,7 @@ class Cliente extends Model
 {
    protected $fillable = [
     'nome',
-    'cnpj','razao_social',
+    'cnpj', 'tipo', 'cpf', 'cnpj_cpf','razao_social',
     'nome_fantasia','telefone',
     'email','cep','rua','numero',
     'complemento','bairro',
