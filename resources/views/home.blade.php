@@ -356,7 +356,7 @@
                                         @php
                                             $dataLimite = \Carbon\Carbon::parse($objeto->data_limite);
                                         @endphp
-                                        @if ($dataLimite->isPast())
+                                        @if ($dataLimite->isPast() && $objeto->status !== "Entregue")
                                             <tr>
                                                 <td>{{ $objeto->descricao }}</td>
                                                 <td>{{ $objeto->cliente->nome }}</td>
