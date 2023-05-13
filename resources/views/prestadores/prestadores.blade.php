@@ -21,8 +21,6 @@
               <th scope="col" >Telefone</th>
               <th scope="col" >Dados bancários</th>
               <th scope="col" >Atualizado por</th>
-              <th scope="col" >Data Cadastro</th>
-              <th scope="col" >Data Update</th>
               <th scope="col"></th>
               <th scope="col" ></th>
             </tr>
@@ -35,8 +33,6 @@
               <td >{{ $prestador->telefone }}</td> 
               <td >{{ $prestador->dados_bancarios }}</td> 
               <td >{{ $prestador->usuario->name }}</td> 
-              <td >{{ date("d/m/Y", strtotime($prestador->created_at)) }}</td> 
-              <td >{{ date("d/m/Y", strtotime($prestador->updated_at)) }}</td> 
               <td><a href="{{ route('edita_prestador',['id'=>$prestador->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>
               <td >
                   <form action="{{ route('delete_prestador',['id'=>$prestador->id])}}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">
