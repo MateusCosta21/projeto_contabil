@@ -16,8 +16,8 @@
                     <div class="form-row align-items-center">
                         <div class="col-lg-12 text-center">
                             <select name="opcao_consulta" id="opcao_consulta" class="form-control form-control">
+                                <option value="">Selecione uma opção</option>
                                 @foreach ($clientes as $cliente)
-                                    <option value="">Selecione uma opção</option>
                                     <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
                                 @endforeach
                             </select>
@@ -40,8 +40,8 @@
                     <div class="form-row align-items-center">
                         <div class="col-lg-12 text-center">
                             <select name="opcao_consulta" id="opcao_consulta" class="form-control">
+                                <option value="">Selecione uma opção</option>
                                 @foreach ($tiposObjetos as $tipo)
-                                    <option value="">Selecione uma opção</option>
                                     <option value="{{ $tipo->id }}">{{ $tipo->nome }}</option>
                                 @endforeach
                             </select>

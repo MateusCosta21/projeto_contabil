@@ -25,8 +25,6 @@
               <th scope="col">Telefone</th>
               <th scope="col" class="d-none d-lg-table-cell">Dados bancários</th>
               <th scope="col" class="d-none d-lg-table-cell">Atualizado por</th>
-              <th scope="col" class="d-none d-lg-table-cell">Data Cadastro</th>
-              <th scope="col" class="d-none d-lg-table-cell">Data Update</th>
               <th scope="col" class="d-none d-lg-table-cell"></th>
               <th scope="col" class="d-none d-lg-table-cell"></th>
             </tr>
@@ -39,8 +37,6 @@
               <td>{{ $prestador->telefone }}</td> 
               <td class="d-none d-lg-table-cell">{{ $prestador->dados_bancarios }}</td> 
               <td class="d-none d-lg-table-cell">{{ $prestador->usuario->name }}</td> 
-              <td class="d-none d-lg-table-cell">{{ date("d/m/Y", strtotime($prestador->created_at)) }}</td> 
-              <td class="d-none d-lg-table-cell">{{ date("d/m/Y", strtotime($prestador->updated_at)) }}</td> 
               <td class="d-none d-lg-table-cell"><a href="{{ route('edita_prestador',['id'=>$prestador->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a></td>
               <td class="d-none d-lg-table-cell">
                   <form action="{{ route('delete_prestador',['id'=>$prestador->id])}}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?')">

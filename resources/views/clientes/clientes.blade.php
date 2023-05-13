@@ -37,9 +37,18 @@
                                 
                                     <td class="text-wrap">{{$cliente->nome}}</td>
                                     <td class="text-wrap">{{$cliente->razao_social}}</td>
-                                    <td class="d-none d-sm-table-cell">{{ $cliente->cnpj }}</td>
-                                    <td class="d-none d-sm-table-cell">{{$cliente->usuario->name}}</td>
-                                    <td class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($cliente->created_at)) }}
+                                    @php
+                                    if($cliente->cnpj){
+                                        echo "<td>$cliente->cnpj</td>";
+                                    }else if($cliente->cpf){
+                                        echo "<td>$cliente->cpf</td>";
+                                    }else{
+                                        echo "<td>$cliente->cnpj_cpf</td>";
+
+                                    }
+                                    @endphp
+                                    <td>{{$cliente->usuario->name}}</td>
+                                    <td>{{ date('d/m/Y', strtotime($cliente->created_at)) }}
                                     </td>
                                     <td  class="d-none d-sm-table-cell">{{ date('d/m/Y', strtotime($cliente->updated_at)) }}
                                     </td>

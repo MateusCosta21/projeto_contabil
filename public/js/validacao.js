@@ -52,8 +52,28 @@ function deleteItem(url) {
     });
   }
 
+  function verificarTipoDocumento() {
+  var valor = document.getElementById("cnpj_cpf_cadastro").value;
+
+  if (valor.length === 14) { // CNPJ possui 14 dígitos
+    preencherEndereco();
+  } else if (valor.length === 11) { // CPF possui 11 dígitos
+    adicionarMascaraCPF();
+  }
+}
+
+ function adicionarMascaraCPF(){
+  $('#cnpj_cpf_cadastro').mask('000.000.000-00');
+   }
+
   function preencherEndereco() {
-    var cnpj = $("#cnpj").val();
+    var campo = $("#cnpj_cadastro").val();
+    var campo2 = $("#cnpj_cpf_cadastro").val();
+    if(campo !== ''){
+      var cnpj = campo;
+    } else if(campo2 !== ''){
+      cnpj = campo2;
+    }
     $('#loadingModal').modal('show');
     $.ajax({
       url: "/buscacnpj/" + cnpj,
@@ -70,7 +90,7 @@ function deleteItem(url) {
         $("#nome").val(data.razao_social || "");
         $("#telefone").val(data.telefone || "");
         $("#email").val(data.email || "");
-        $("#cnpj").val(data.cnpj || "");
+        $("#cnpj_cadastro").val(data.cnpj || "");
         $('#loadingModal').modal('hide');
 
       },
@@ -79,3 +99,21 @@ function deleteItem(url) {
       }
     });
   }
+
+  function limparFormulario() {
+    document.getElementById("nome").value = "";
+    document.getElementById("cnpj_cadastro").value = "";
+    document.getElementById("cpf_cadastro").value = "";
+    document.getElementById("cnpj_cpf_cadastro").value = "";
+    document.getElementById("razao_social").value = "";
+    document.getElementById("nome_fantasia").value = "";
+    document.getElementById("telefone").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("cep").value = "";
+    document.getElementById("rua").value = "";
+    document.getElementById("numero").value = "";
+    document.getElementById("complemento").value = "";
+    document.getElementById("bairro").value = "";
+    document.getElementById("cidade").value = "";
+    document.getElementById("estado").value = "";
+}

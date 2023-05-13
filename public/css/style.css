@@ -705,3 +705,24 @@ tr th.col-destinatario {
   }
 }
   
+  @media screen and (max-width: 768px) {
+    table.dataTable.responsive {
+      width: 100% !important;
+    }
+    table.dataTable.responsive td {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  #cpf_cadastro{
+    display:none;
+  }
+  #cnpj_cadastro{
+    display:none;
+  }
+
+  #cnpj_cpf_cadastro{
+    display:none;
+  }
